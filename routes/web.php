@@ -1,22 +1,43 @@
 <?php
 
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Default', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('welcome');
+
+Route::get('/about', function () {
+    return Inertia::render('About');
+})->name('about');
+
+Route::get('/directories', function () {
+    return Inertia::render('Directories');
+})->name('directories');
+
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/become-a-member', function () {
+    return Inertia::render('Membership');
+})->name('member.join');
+Route::post('/become-a-member', [MemberController::class, 'store'])->name('Membership.store');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/members', [MemberController::class, 'index'])->name('members');
+    Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('member.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -24,4 +45,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
