@@ -19,7 +19,7 @@ const Default = () => {
                     preload="true"
                 >
                     <source
-                        src="/storage/20193649-hd_1920_1080_24fps.mp4"
+                        src="/20193650-uhd_3840_2160_24fps.mp4"
                         type="video/mp4"
                     />
                     Your browser does not support the video tag.
@@ -64,7 +64,7 @@ const Default = () => {
                                     data-nimg="fill"
                                     className="block h-auto w-full object-cover"
                                     sizes="(min-width: 769px) 50vw, 100vw"
-                                    src="/storage/nido_732.jpg"
+                                    src="/nido-11.jpg"
                                     style={{
                                         position: "absolute",
                                         height: "100%",
@@ -174,9 +174,9 @@ const Default = () => {
                         className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="mx-auto max-w-5xl">
+                        <div className="mx-auto max-w-5xl px-6">
                             <div className="text-white text-center">
-                                <h2 className="text-6xl font-normal">
+                                <h2 className="text-3xl lg:text-6xl font-normal">
                                     Join us and be part of a community where
                                     camaraderie meets opportunity for Nigerians
                                     in Vietnam.

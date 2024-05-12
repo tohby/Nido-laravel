@@ -96,7 +96,7 @@ const Navbar = () => {
                             </div>
                         </div>
                     </div>
-                    <ul className="hidden flex-col items-center gap-12 lg:flex lg:flex-row">
+                    <ul className="hidden flex-col items-center gap-8 lg:flex lg:flex-row">
                         {menuLinks.map((link, index) => (
                             <li className="body-s">
                                 <NavLink
