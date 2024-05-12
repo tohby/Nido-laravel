@@ -17,7 +17,7 @@ const Navbar = () => {
             <div className="mx-auto max-w-screen-3xl px-4 flex max-w-[80rem] items-center justify-between md:h-11 lg:px-6">
                 <div className="relative flex w-full justify-between gap-16 md:justify-normal">
                     <img
-                        src="/storage/nidovn-logo-7.png"
+                        src="/nidovn-logo-7.png"
                         className="block h-10 lg:h-20 w-auto fill-current text-gray-800 me-8"
                     />
                     <div

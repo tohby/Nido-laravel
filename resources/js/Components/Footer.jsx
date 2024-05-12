@@ -4,7 +4,7 @@ import ApplicationLogo from "./ApplicationLogo";
 const Footer = () => {
     return (
         <footer>
-            <div className="mx-auto max-w-screen-3xl px-4 lg:px-2.5 flex h-full flex-col justify-between gap-6 md:gap-[198px] lg:gap-[293px] bg-stone-100 mt-8">
+            <div className="mx-auto max-w-screen-3xl px-4 lg:px-2.5 flex h-full flex-col justify-between gap-6 md:gap-[100px] lg:gap-[150px] bg-stone-100 mt-8">
                 <div className="grid grid-cols-12 gap-2 md:gap-2.5 gap-y-8 pt-6 lg:pt-14">
                     <div className="col-span-12 hidden md:col-span-3 md:block lg:col-start-2">
                         <a

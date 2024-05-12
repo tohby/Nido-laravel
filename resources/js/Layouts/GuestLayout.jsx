@@ -9,7 +9,7 @@ export default function Guest({ children }) {
         <div className="min-h-screen">
             <Navbar />
             <main>{children}</main>
-            <Drawer isOpen={true} dismiss={() => {}} />
+            <Drawer isOpen={false} dismiss={() => {}} />
             <Footer />
         </div>
     );

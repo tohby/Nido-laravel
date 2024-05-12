@@ -38,11 +38,11 @@ const Default = () => {
                     </p>
                 </div>
             </div>
-            <section className="py-12">
+            <section className="py-20">
                 <div className="mx-auto max-w-screen-3xl px-4 lg:px-2.5">
                     <div className="grid grid-cols-12 gap-2 md:gap-2.5 pb-8 md:pb-14 lg:pb-18">
                         <div className="col-span-12 flex flex-col items-start md:col-span-10 lg:col-span-7 lg:col-start-2">
-                            <h2 className="text-5xl mb-2">
+                            <h2 className="text-5xl mb-2 py-6">
                                 Welcome to Nido Vietnam, your home base in the
                                 diaspora.
                             </h2>
@@ -166,10 +166,10 @@ const Default = () => {
                 </div>
             </section>
 
-            <section id="CTA" className="mx-4">
+            <section id="CTA" className="mx-4 mt-20">
                 <div className="relative bg-green-900 py-80 rounded-xl">
                     <img
-                        src="/storage/cta_bg.png"
+                        src="/cta_bg.png"
                         alt="Background Image"
                         className="absolute inset-0 w-full h-full object-cover"
                     />
