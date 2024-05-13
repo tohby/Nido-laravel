@@ -10,7 +10,7 @@ const Default = () => {
         <Guest>
             <Head title="Welcome" />
 
-            <div className="relative w-full lg:w-[100rem] h-[45rem] mx-auto mt-4 overflow-hidden rounded-3xl md:block">
+            <div className="relative w-full md:w-11/12  h-[45rem] mx-auto mt-4 overflow-hidden rounded-3xl md:block">
                 <video
                     className="absolute left-0 w-full h-full object-cover rounded-3xl"
                     autoPlay
