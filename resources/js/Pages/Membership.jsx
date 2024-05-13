@@ -55,7 +55,7 @@ const Membership = () => {
                             leaveTo="opacity-0 scale-95 "
                         >
                             <img
-                                src="/storage/Success Icon.svg"
+                                src="/Success Icon.svg"
                                 className="w-48 mx-auto"
                                 alt="Success"
                             />
