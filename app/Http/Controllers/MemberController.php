@@ -6,7 +6,7 @@ use App\Models\Member;
 use App\Models\Passport;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Notifications\MemberRegistered;
+use App\Events\MemberRegistered;
 
 class MemberController extends Controller
 {
@@ -94,7 +94,8 @@ class MemberController extends Controller
         }
 
         $member = Member::create($memberData);
-        $member->notify(new MemberRegistered());
+        // $member->notify(new MemberRegistered());
+        MemberRegistered::dispatch($member);
 
         Passport::Create([
             'member_id' => $member->id,

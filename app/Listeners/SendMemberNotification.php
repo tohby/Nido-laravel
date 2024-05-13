@@ -5,6 +5,8 @@ namespace App\Listeners;
 use App\Events\MemberRegistered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Notifications\NewMemberNotification;
+
 
 class SendMemberNotification
 {
@@ -21,6 +23,8 @@ class SendMemberNotification
      */
     public function handle(MemberRegistered $event): void
     {
-        //
+        // dd($event);
+        $member = $event->member;
+        $member->notify(new NewMemberNotification());
     }
 }
