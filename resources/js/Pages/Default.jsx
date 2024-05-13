@@ -10,7 +10,7 @@ const Default = () => {
         <Guest>
             <Head title="Welcome" />
 
-            <div className="relative w-[100rem] h-[45rem] mx-auto mt-4 overflow-hidden rounded-3xl hidden md:block">
+            <div className="relative w-full lg:w-[100rem] h-[45rem] mx-auto mt-4 overflow-hidden rounded-3xl md:block">
                 <video
                     className="absolute left-0 w-full h-full object-cover rounded-3xl"
                     autoPlay
@@ -166,7 +166,7 @@ const Default = () => {
                 </div>
             </section>
 
-            <section id="CTA" className="mx-4 mt-20">
+            <section id="CTA" className="mx-4 mt-2 lg:mt-20">
                 <div className="relative bg-green-900 py-80 rounded-xl">
                     <img
                         src="/cta_bg.png"
@@ -196,7 +196,7 @@ const Default = () => {
                 </div>
             </section>
             <section id="faqs">
-                <div className="container py-40 mx-auto">
+                <div className="container py-20 lg:py-40 mx-auto">
                     <div className="max-w-xl mx-auto">
                         <div className="w-full h-1 max-w-28 min-h-1 bg-green-700 mb-4 mx-auto"></div>
                         <div className="text-center mb-10">
