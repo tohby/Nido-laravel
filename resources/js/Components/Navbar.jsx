@@ -11,7 +11,7 @@ const menuLinks = [
     { label: "Contact", route: "contact" },
 ];
 
-const Navbar = () => {
+const Navbar = ({ openSidebar }) => {
     return (
         <nav className="py-3 lg:py-6">
             <div className="mx-auto max-w-screen-3xl px-4 flex max-w-[80rem] items-center justify-between md:h-11 lg:px-6">
@@ -32,6 +32,7 @@ const Navbar = () => {
                             aria-controls=":R2aja:"
                             className="group absolute right-0 top-0 mr-0 mt-0 flex h-8 w-8 flex-col items-center justify-center outline-none"
                             data-rac=""
+                            onClick={() => openSidebar(true)}
                         >
                             <div className="ease my-1 h-[2px] w-5 transform rounded-full transition duration-300 group-data-[focus-visible]:bg-yellow group-data-[focus-visible]:theme-tech:bg-yellow bg-gray-400 theme-tech:bg-gray-200" />
                             <div className="ease my-1 h-[2px] w-5 transform rounded-full transition duration-300 group-data-[focus-visible]:bg-yellow group-data-[focus-visible]:theme-tech:bg-yellow bg-gray-400 theme-tech:bg-gray-200" />

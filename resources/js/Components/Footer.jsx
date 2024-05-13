@@ -1,5 +1,6 @@
 import React from "react";
 import ApplicationLogo from "./ApplicationLogo";
+import { Link } from "@inertiajs/react";
 
 const Footer = () => {
     return (
@@ -18,38 +19,44 @@ const Footer = () => {
                     <div className="col-span-12 grid grid-cols-subgrid gap-y-8 md:col-span-8 md:gap-y-18 lg:col-span-6">
                         <div className="col-span-6 flex flex-col gap-4 md:col-span-2 lg:col-span-2">
                             <h3 className="text-gray-400 theme-tech:text-gray-100">
-                                Conversational AI
+                                Links
                             </h3>
                             <ul className="flex flex-col gap-4">
                                 <li className="body-s">
-                                    <a
-                                        className='before relative py-1 text-green-500 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
-                                        href="/product"
+                                    <Link
+                                        className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
+                                        href={route("about")}
                                     >
-                                        Product
-                                    </a>
+                                        About
+                                    </Link>
                                 </li>
                                 <li className="body-s">
-                                    <a
-                                        className='before relative py-1 text-green-500 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
-                                        href="/platform"
+                                    <Link
+                                        className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
+                                        href={route("contact")}
                                     >
-                                        Platform
-                                    </a>
+                                        Contact
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
                         <div className="col-span-6 flex flex-col gap-4 md:col-span-2 lg:col-span-2">
                             <h3 className="text-gray-400 theme-tech:text-gray-100">
-                                Customers
+                                NIDO contact
                             </h3>
                             <ul className="flex flex-col gap-4">
                                 <li className="body-s">
+                                    <p className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
+                                        Phone: +84775568278
+                                    </p>
+                                </li>
+                                <li className="body-s">
                                     <a
-                                        className='before relative py-1 text-green-500 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
-                                        href="/customers"
+                                        target="_blank"
+                                        href="https://www.facebook.com/groups/357099351095953"
+                                        className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
                                     >
-                                        Customer Stories
+                                        Facebook group
                                     </a>
                                 </li>
                             </ul>
@@ -60,25 +67,20 @@ const Footer = () => {
                             </h3>
                             <ul className="flex flex-col gap-4">
                                 <li className="body-s">
-                                    <p className='before relative py-1 text-green-500 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
-                                        About
+                                    <p className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
+                                        Address: Villa No. 44/1 phố 100000, P.
+                                        Vạn Bảo, Ngọc Khánh, Ba Đình, Hà Nội
                                     </p>
                                 </li>
                                 <li className="body-s">
-                                    <a
-                                        className='before relative py-1 text-green-500 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
-                                        href="/news"
-                                    >
-                                        Newsroom
-                                    </a>
+                                    <p className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
+                                        Phone: +84775568278
+                                    </p>
                                 </li>
                                 <li className="body-s">
-                                    <a
-                                        className='before relative py-1 text-gray-400 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'
-                                        href="/terms-and-conditions"
-                                    >
-                                        Terms &amp; Conditions
-                                    </a>
+                                    <p className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
+                                        contact-us@nigeriaembassy.org.vn
+                                    </p>
                                 </li>
                             </ul>
                         </div>
