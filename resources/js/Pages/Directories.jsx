@@ -29,7 +29,7 @@ const About = () => {
                             alt=""
                         />
                         <div className="flex flex-col justify-between p-4 leading-normal ml-4">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <h5 className="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
                                 Noteworthy technology acquisitions 2021
                             </h5>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
