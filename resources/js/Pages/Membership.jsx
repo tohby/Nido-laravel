@@ -14,6 +14,7 @@ import { Link } from "@inertiajs/react";
 
 const Membership = () => {
     const { errors } = usePage().props;
+    console.log(errors);
     const { data, setData, post, processing, wasSuccessful } = useForm({
         fullname: "",
         email: "",
@@ -30,6 +31,9 @@ const Membership = () => {
         employerOrInstitution: "",
         expiryDate: "",
         dateOfIssue: "",
+        lga: "",
+        gender: "",
+        level_of_education: "",
     });
 
     const submit = (e) => {
@@ -186,6 +190,31 @@ const Membership = () => {
                                 </div>
                                 <div>
                                     <InputLabel
+                                        htmlFor="Gender"
+                                        value="Gender"
+                                        required
+                                    />
+                                    <SelectInput
+                                        id="gender"
+                                        className="mt-1 block w-full"
+                                        value={data.maritalStatus}
+                                        onChange={(e) =>
+                                            setData("gender", e.target.value)
+                                        }
+                                    >
+                                        <option value="" disabled>
+                                            Select your option
+                                        </option>
+                                        <option value="M">Male</option>
+                                        <option value="F">Female</option>
+                                    </SelectInput>
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.gender}
+                                    />
+                                </div>
+                                <div>
+                                    <InputLabel
                                         htmlFor="marital-status"
                                         value="Marital status"
                                         required
@@ -273,6 +302,64 @@ const Membership = () => {
                                         message={errors.stateOfOrigin}
                                     />
                                 </div>
+                                <div>
+                                    <InputLabel
+                                        value={
+                                            "Local government area of Origin"
+                                        }
+                                        required
+                                    />
+                                    <TextInput
+                                        id="lga"
+                                        className="mt-1 block w-full"
+                                        value={data.lga}
+                                        onChange={(e) =>
+                                            setData("lga", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.lga}
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1">
+                                <InputLabel
+                                    value={"Level of education"}
+                                    required
+                                />
+                                <SelectInput
+                                    className="mt-1 block w-full"
+                                    value={data.level_of_education}
+                                    onChange={(e) =>
+                                        setData(
+                                            "level_of_education",
+                                            e.target.value
+                                        )
+                                    }
+                                >
+                                    <option value="" disabled>
+                                        Select your option
+                                    </option>
+                                    <option value="None">None</option>
+                                    <option value="High school graduate">
+                                        High school
+                                    </option>
+                                    <option value="Bachelor's Degree">
+                                        Bachelor's Degree
+                                    </option>
+                                    <option value="Master's Degree">
+                                        Master's Degree
+                                    </option>
+                                    <option value="Doctorate Degree">
+                                        Doctorate Degree
+                                    </option>
+                                </SelectInput>
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.level_of_education}
+                                />
                             </div>
 
                             <div className="grid grid-cols-2 gap-7">
@@ -288,6 +375,10 @@ const Membership = () => {
                                                 e.target.value
                                             )
                                         }
+                                    />
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.occupation}
                                     />
                                 </div>
                                 <div>
@@ -311,6 +402,10 @@ const Membership = () => {
                                                 e.target.value
                                             )
                                         }
+                                    />
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.employerOrInstitution}
                                     />
                                 </div>
                             </div>

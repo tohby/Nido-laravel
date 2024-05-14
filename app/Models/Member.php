@@ -33,6 +33,9 @@ class Member extends Model
         'employer',
         'institution',
         'occupation',
+        'level_of_education',
+        'gender',
+        'LGA'
     ];
 
     public function passports(): HasMany

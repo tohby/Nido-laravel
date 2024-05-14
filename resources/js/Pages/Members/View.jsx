@@ -38,6 +38,42 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                                 </span>
                             </div>
                         </div>
+                        <div className="grid grid-cols-2 gap-7">
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Date of issue:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <Calendar
+                                        className="text-gray-500"
+                                        size={16}
+                                    />
+                                    <span className="ml-1">
+                                        {memberData &&
+                                            memberData.passports &&
+                                            memberData.passports[0]
+                                                ?.date_of_issue}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Date of Expiry:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <Calendar
+                                        className="text-gray-500"
+                                        size={16}
+                                    />
+                                    <span className="ml-1">
+                                        {memberData &&
+                                            memberData.passports &&
+                                            memberData.passports[0]
+                                                ?.expiry_date}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                         <div className="grid grid-cols-2">
                             <div className="flex flex-col text-gray-500 mb-2">
                                 <label className="mb-1 text-sm">Email:</label>
@@ -62,15 +98,28 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col text-gray-500 mb-2">
-                            <label className="mb-1 text-sm">
-                                Date of birth:
-                            </label>
-                            <div className="flex items-center text-gray-800 text-lg">
-                                <Calendar className="text-gray-500" size={16} />
-                                <span className="ml-1">
-                                    {moment(memberData.dob).format("LL")}
-                                </span>
+                        <div className="grid grid-cols-2">
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Date of birth:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <Calendar
+                                        className="text-gray-500"
+                                        size={16}
+                                    />
+                                    <span className="ml-1">
+                                        {moment(memberData.dob).format("LL")}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">Gender:</label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <span className="ml-1">
+                                        {memberData.gender}
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -96,14 +145,26 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col text-gray-500 mb-2">
-                            <label className="mb-1 text-sm">
-                                State of origin:
-                            </label>
-                            <div className="flex items-center text-gray-800 text-lg">
-                                <span className="ml-1">
-                                    {memberData.stateOfOrigin}
-                                </span>
+                        <div className="grid grid-cols-2">
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    State of origin:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <span className="ml-1">
+                                        {memberData.stateOfOrigin}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Local Government of origin:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <span className="ml-1">
+                                        {memberData.LGA}
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -147,6 +208,18 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                                 <div className="flex items-center text-gray-800 text-lg">
                                     <span className="ml-1">
                                         {memberData.employer}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="grid grid-cols-2">
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Level of education:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <span className="ml-1">
+                                        {memberData.level_of_education}
                                     </span>
                                 </div>
                             </div>

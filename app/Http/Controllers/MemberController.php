@@ -62,6 +62,9 @@ class MemberController extends Controller
             'occupation' => ['required', 'string'],
             'passportNumber' => ['required', 'string',],
             'passportImage' => 'required|image|mimes:jpeg,png,jpg|max:5048',
+            'lga' => 'required|string',
+            'gender' => 'required|string',
+            'level_of_education' => 'required|string'
         ]);
 
         if ($request->hasFile('passportImage')) {
@@ -85,6 +88,9 @@ class MemberController extends Controller
             'nextOfKin' => $request->input('nextOfKin'),
             'nextOfKinPhone' => $request->input('nextOfKinPhone'),
             'occupation' => $occupation,
+            'LGA' => $request->input('lga'),
+            'level_of_education' => $request->input('level_of_education'),
+            'gender' => $request->input('gender'),
         ];
 
         if (strtolower($occupation) === 'student') {
