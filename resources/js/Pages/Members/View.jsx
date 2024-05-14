@@ -129,6 +129,28 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                                 </div>
                             </div>
                         </div>
+                        <div className="grid grid-cols-2">
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Occupation:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <span className="ml-1">
+                                        {memberData.occupation}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="flex flex-col text-gray-500 mb-2">
+                                <label className="mb-1 text-sm">
+                                    Employer:
+                                </label>
+                                <div className="flex items-center text-gray-800 text-lg">
+                                    <span className="ml-1">
+                                        {memberData.employer}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
