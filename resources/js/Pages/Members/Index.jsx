@@ -161,7 +161,10 @@ export default function Index({ auth, members, searchQuery }) {
                                                     {member.fullname}
                                                 </th>
                                                 <td className="px-6 py-4">
-                                                    {member.passportNumber}
+                                                    {
+                                                        member.passports[0]
+                                                            ?.number
+                                                    }
                                                 </td>
                                                 <td className="px-6 py-4">
                                                     {member.phone}
