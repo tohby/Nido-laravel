@@ -35,8 +35,13 @@ class NewMemberNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-        ->line('Welcome to the Nido family.')
-        ->line('Thank you for registering your Nido membership!');
+            ->subject('Welcome to NIDO VN')
+            ->greeting('Welcome to the Nido family.')
+            ->line('Your registration marks the start of an exciting journey with us.')
+            ->line('Wether you are here for our content or to connect with others, we are committed to providing a valuable experience')
+            ->line('Welcome once again,')
+            ->line('Warm Regards')
+            ->salutation('Thanks');
     }
 
     /**
