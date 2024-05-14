@@ -142,7 +142,7 @@ class MemberController extends Controller
     public function destroy($id)
     {
         $member = Member::find($id);
-        $passports = Passport::where('user_id', $id)->delete();
+        $passports = Passport::where('member_id', $id)->delete();
         $member->delete();
         return redirect()->back();
     }
