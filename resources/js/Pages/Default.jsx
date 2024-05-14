@@ -64,7 +64,7 @@ const Default = () => {
                                     data-nimg="fill"
                                     className="block h-auto w-full object-cover"
                                     sizes="(min-width: 769px) 50vw, 100vw"
-                                    src="/nido-11.jpg"
+                                    src="/pexels-ilabappa-20434733.jpg"
                                     style={{
                                         position: "absolute",
                                         height: "100%",

@@ -40,7 +40,6 @@ class MemberRegistered extends Notification
             ->line('Your registration marks the start of an exciting journey with us.')
             ->line('Wether you are here for our content or to connect with others, we are committed to providing a valuable experience')
             ->line('Welcome once again,')
-            ->line('Warm Regards')
             ->salutation('Thanks');
     }
 
