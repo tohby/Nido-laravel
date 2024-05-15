@@ -47,7 +47,7 @@ const Footer = () => {
                             <ul className="flex flex-col gap-4">
                                 <li className="body-s">
                                     <p className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
-                                        Phone: +84775568278
+                                        Phone: +84326189705
                                     </p>
                                 </li>
                                 <li className="body-s">
