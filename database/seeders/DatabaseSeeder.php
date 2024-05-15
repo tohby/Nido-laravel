@@ -15,14 +15,20 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Tobi Adeyinka',
-            'email' => 'tadeyinka173@gmail.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Tobi Adeyinka',
+        //     'email' => 'tadeyinka173@gmail.com',
+        // ]);
+
+        // User::factory()->create([
+        //     'name' => 'Micheal Omar',
+        //     'email' => 'mikeom21@yahoo.com',
+        // ]);
 
         User::factory()->create([
-            'name' => 'Micheal Omar',
-            'email' => 'mikeom21@yahoo.com',
+            'name' => 'Embassy Staff',
+            'email' => 'embassy@nidovietnam.com',
+            'role' => 1
         ]);
     }
 }
