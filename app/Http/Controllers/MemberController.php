@@ -7,6 +7,7 @@ use App\Models\Passport;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Events\MemberRegistered;
+use Illuminate\Database\Eloquent\Builder;
 
 class MemberController extends Controller
 {
@@ -15,20 +16,21 @@ class MemberController extends Controller
      */
     public function index(Request $request)
     {
-        $query = $request->input('search');
+        $searchQuery = $request->input('search');
         $membersQuery = Member::with(['passports']);
-        if ($query) {
-            $membersQuery->where('fullname', 'like', '%' . $query . '%')
-                ->orWhere('email', 'like', '%' . $query . '%')
-                ->orWhere('phone', 'like', '%' . $query . '%')
-                ->orWhere('passportNumber', 'like', '%' . $query . '%');
-        }
+        if ($searchQuery) {
+            $membersQuery->where('fullname', 'like', '%' . $searchQuery . '%')
+                ->orWhere('email', 'like', '%' . $searchQuery . '%')
+                ->orWhere('phone', 'like', '%' . $searchQuery . '%')
+                ->orWhereHas('passports', function(Builder $query) use ($searchQuery) {
+                    $query->where('number', 'like', '%'.$searchQuery.'%');
+                });}
 
         $members = $membersQuery->latest()->paginate(15);
         return Inertia::render('Members/Index', [
             'status' => session('status'),
             'members' => $members,
-            'searchQuery' => $query
+            'searchQuery' => $searchQuery
         ]);
     }
 

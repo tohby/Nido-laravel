@@ -120,7 +120,7 @@ export default function Index({ auth, members, searchQuery }) {
                                                 <td className="px-2 py-4">
                                                     <div className="flex gap-3">
                                                         <SecondaryButton
-                                                            className="focus:ring-0 border-0 px-2"
+                                                            className="focus:ring-0 border-0 px-2 hidden"
                                                             onClick={() =>
                                                                 toast(
                                                                     "Hello World"

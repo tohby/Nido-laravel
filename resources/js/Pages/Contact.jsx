@@ -1,10 +1,9 @@
 import React from "react";
 import Guest from "@/Layouts/GuestLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Facebook, MessageCircle, Phone } from "react-feather";
+import { Facebook, MessageCircle, Phone, ChevronUp, MessageSquare } from "react-feather";
 import { faqs } from "@/Constants/faqs";
 import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUp, Users } from "react-feather";
 
 const About = () => {
     return (
@@ -29,22 +28,22 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="max-w-sm p-6 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-700 mx-auto">
                         <div className="flex items-center justify-center w-12 h-12 rounded-md bg-green-100 mb-4">
-                            <Phone className="text-green-900" />
+                            <MessageCircle className="text-green-900" />
                         </div>
 
                         <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                            Call us
+                            Join our group on Whatsapp
                         </h5>
                         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
                             Our lines are open,
-                            Don't hesitate to give us a call.
+                            meet like minded people on our WhatsApp group.
                         </p>
-                        <h5
-
-                            className="inline-flex font-medium items-center text-green-600 mt-12"
+                        <a
+                            href="https://wa.me/+84326189705?text=Hello%20NIDO" target="_blank"
+                            className="inline-flex font-medium items-center text-green-600 mt-2"
                         >
-                            +84775568278
-                        </h5>
+                            Join our WhatsApp group
+                        </a>
                     </div>
                     <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 mx-auto">
                         <div className="flex items-center justify-center w-12 h-12 rounded-md bg-green-100 mb-4">
