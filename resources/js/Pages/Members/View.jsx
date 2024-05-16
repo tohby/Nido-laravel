@@ -266,7 +266,7 @@ export const View = ({ show, setShowViewModal, memberData }) => {
 
                     <div className="flex justify-end gap-7" id="action">
                         <SecondaryButton
-                            className="focus:ring-0 focus:outline-none"
+                            className="focus:ring-0 focus:outline-none hidden"
                             onClick={() => downloadPDF()}
                         >
                             Download PDF
