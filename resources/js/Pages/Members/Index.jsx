@@ -5,7 +5,7 @@ import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
 import { Edit2, Eye, Trash } from "react-feather";
 import Modal from "@/Components/Modal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm, router, usePage } from "@inertiajs/react";
 import toast from "react-hot-toast";
 import { View } from "./View";
@@ -15,9 +15,8 @@ export default function Index({ auth, members, searchQuery }) {
     const [showViewModal, setShowViewModal] = useState(false);
     const [selectedMemberId, setSelectedMemberId] = useState(0);
     const [memberData, setMemberData] = useState({});
-    const { visit } = usePage();
 
-    const { data, setData, get, processing, reset, errors } = useForm({
+    const { data, setData, get, processing } = useForm({
         search: searchQuery || "",
     });
 

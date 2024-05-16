@@ -1,7 +1,7 @@
 import React from "react";
 import Guest from "@/Layouts/GuestLayout";
 import { Head, Link } from "@inertiajs/react";
-import { Facebook, MessageCircle, Phone, ChevronUp, MessageSquare } from "react-feather";
+import { Facebook, MessageCircle, ChevronUp } from "react-feather";
 import { faqs } from "@/Constants/faqs";
 import { Disclosure, Transition } from "@headlessui/react";
 
@@ -35,11 +35,12 @@ const About = () => {
                             Join our group on Whatsapp
                         </h5>
                         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-                            Our lines are open,
-                            meet like minded people on our WhatsApp group.
+                            Our lines are open, meet like minded people on our
+                            WhatsApp group.
                         </p>
                         <a
-                            href="https://wa.me/+84326189705?text=Hello%20NIDO" target="_blank"
+                            href="https://wa.me/+84326189705?text=Hello%20NIDO"
+                            target="_blank"
                             className="inline-flex font-medium items-center text-green-600 mt-2"
                         >
                             Join our WhatsApp group
@@ -53,11 +54,10 @@ const About = () => {
                             Message Us
                         </h5>
                         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-                            Send us an email, and our dedicated team will get back to you promptly.
+                            Send us an email, and our dedicated team will get
+                            back to you promptly.
                         </p>
-                        <h5
-                            className="inline-flex font-medium items-center text-green-600 mt-12"
-                        >
+                        <h5 className="inline-flex font-medium items-center text-green-600 mt-12">
                             info@nidovietnam.com
                         </h5>
                     </div>
@@ -69,7 +69,9 @@ const About = () => {
                             Join our community
                         </h5>
                         <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-                            Connect with like-minded individuals, share ideas, and stay updated on the latest news and events by joining our Facebook group
+                            Connect with like-minded individuals, share ideas,
+                            and stay updated on the latest news and events by
+                            joining our Facebook group
                         </p>
                         <a
                             href="https://www.facebook.com/groups/357099351095953"
@@ -150,10 +152,11 @@ const About = () => {
                                                 <Disclosure.Button className="flex w-full justify-between rounded-lg bg-green-100 px-6 py-6 text-left text-2xl font-normal text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring focus-visible:ring-green-500/75">
                                                     <span>{faq.question}</span>
                                                     <ChevronUp
-                                                        className={`${open
-                                                            ? "rotate-180 transform transition-transform duration-300"
-                                                            : "transition-transform duration-300"
-                                                            } h-10 w-10 text-green-500`}
+                                                        className={`${
+                                                            open
+                                                                ? "rotate-180 transform transition-transform duration-300"
+                                                                : "transition-transform duration-300"
+                                                        } h-10 w-10 text-green-500`}
                                                     />
                                                 </Disclosure.Button>
                                                 <Transition

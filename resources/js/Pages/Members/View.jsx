@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "@/Components/Modal";
 import moment from "moment";
 import SecondaryButton from "@/Components/SecondaryButton";
-import { User, Hash, Mail, Calendar, Phone, Home, Users } from "react-feather";
+import { Hash, Mail, Calendar, Phone, Home, Users } from "react-feather";
 
 export const View = ({ show, setShowViewModal, memberData }) => {
     return (

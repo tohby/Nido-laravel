@@ -3,8 +3,7 @@ import Guest from "@/Layouts/GuestLayout";
 import { Head, Link } from "@inertiajs/react";
 import { faqs } from "@/Constants/faqs";
 import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronUp, Users } from "react-feather";
-
+import { ChevronUp } from "react-feather";
 
 const About = () => {
     return (
@@ -16,9 +15,6 @@ const About = () => {
                         <h1 className="headline mb-4 whitespace-pre-wrap text-balance text-black theme-tech:text-white lg:mb-8">
                             About NIDO
                         </h1>
-                        {/* <p className="body-m md:body-l lg:title-s max-w-xl whitespace-pre-wrap text-pretty text-gray-300">
-                            Who we are
-                        </p> */}
                     </div>
                     <div className="relative mt-12 aspect-[3/4] w-full md:aspect-[16/7]">
                         <figure className="relative h-full w-full overflow-hidden rounded-3xl bg-gray-200 [transform:translateZ(0)]">
@@ -39,7 +35,6 @@ const About = () => {
                                     color: "transparent",
                                 }}
                             />
-
                         </figure>
                     </div>
                 </div>
@@ -49,17 +44,31 @@ const About = () => {
                 style={{ zIndex: 6 }}
             >
                 <div className="mx-auto max-w-screen-3xl px-4 lg:px-2.5">
-                    <div className="grid grid-cols-12 gap-2 md:gap-2.5 pb-8 md:pb-14 lg:pb-18">
-                        <div className="col-span-12 flex flex-col items-start md:col-span-10 lg:col-span-7 lg:col-start-2">
+                    <div className="grid grid-cols-12 gap-2 md:gap-2.5 pb-8 md:pb-10 lg:pb-8">
+                        <div className="col-span-12 flex flex-col items-start md:col-span-10 lg:col-span-10 lg:col-start-2">
                             <h2 className="text-5xl text-pretty pr-4 text-black theme-tech:text-white md:pr-0">
                                 Intuitive and authentic conversations{" "}
                             </h2>
-                            <p className="body-m mt-2 text-pretty pr-4 text-gray-500 md:max-w-[90%] md:pr-0 lg:mt-6">
-                                The Nigerians in Diaspora Organisation Vietnam is the Vietnamese arm of a global Nigerian Diaspora network. Established in the year 2000 and registered in England and Wales in 2002 under the Companies Act, the organization’s Headquarters is in London.
-
-                                NIDO VN provides an umbrella to all Nigerians in Vietnam. In concert with the other continental arms of NIDO in the Americas, Asia and Africa, the organization is the largest assembly of Nigerians worldwide.
-
-                                The Government of Nigeria recognizes the organization as an official platform through which individual Nigerian Diaspora, their Community Organizations, and Corporate Bodies can channel their developmental efforts to Nigeria. In this sense, the organization partners with Nigerian Community / Professional Organizations as well as public and private businesses in focused areas such as Foreign Direct Investment (FDI), professional networking, stakeholder advocacy, medical missions, educational support and skills transfer to Nigeria.
+                            <p className="body-m mt-2 text-pretty pr-4 text-gray-600 text-xl md:max-w-[90%] md:pr-0 lg:mt-6">
+                                The Nigerians in Diaspora Organisation Vietnam
+                                is the arm of a global Nigerian Diaspora
+                                network. NIDO VN provides an umbrella to all
+                                Nigerians in Vietnam. In concert with the other
+                                continental arms of NIDO in the Americas, Asia
+                                and Africa, the organisation is the largest
+                                assembly of Nigerians worldwide. The Government
+                                of Nigeria recognises the organisation as an
+                                official platform through which individual
+                                Nigerian Diaspora, their Community
+                                Organizations, and Corporate Bodies can channel
+                                their developmental efforts to Nigeria. In this
+                                sense, the organisation partners with Nigerian
+                                Community / Professional Organizations and
+                                public and private businesses in focused areas
+                                such as Foreign Direct Investment (FDI),
+                                professional networking, stakeholder advocacy,
+                                medical missions, educational support and skills
+                                transfer to Nigeria.
                             </p>
                         </div>
                     </div>
@@ -120,10 +129,11 @@ const About = () => {
                                                 <Disclosure.Button className="flex w-full justify-between rounded-lg bg-green-100 px-6 py-6 text-left text-2xl font-normal text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring focus-visible:ring-green-500/75">
                                                     <span>{faq.question}</span>
                                                     <ChevronUp
-                                                        className={`${open
-                                                            ? "rotate-180 transform transition-transform duration-300"
-                                                            : "transition-transform duration-300"
-                                                            } h-10 w-10 text-green-500`}
+                                                        className={`${
+                                                            open
+                                                                ? "rotate-180 transform transition-transform duration-300"
+                                                                : "transition-transform duration-300"
+                                                        } h-10 w-10 text-green-500`}
                                                     />
                                                 </Disclosure.Button>
                                                 <Transition
