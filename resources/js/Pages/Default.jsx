@@ -58,13 +58,13 @@ const Default = () => {
                         <div className="col-span-12 mb-6 md:col-span-6 md:mb-0 lg:col-span-5 lg:col-start-2">
                             <div className="relative aspect-square overflow-hidden rounded-2xl bg-gray-200 theme-tech:bg-gray-700 theme-platform:bg-gray-100 lg:rounded-3xl">
                                 <img
-                                    alt="iPhone screen featuring Sierra AI agent helping a customer exchange shoes using natural, conversational language. "
+                                    alt="One Nigeria"
                                     loading="lazy"
                                     decoding="async"
                                     data-nimg="fill"
                                     className="block h-auto w-full object-cover"
                                     sizes="(min-width: 769px) 50vw, 100vw"
-                                    src="/pexels-ilabappa-20434733.jpg"
+                                    src="/1577075996970.jpg"
                                     style={{
                                         position: "absolute",
                                         height: "100%",
