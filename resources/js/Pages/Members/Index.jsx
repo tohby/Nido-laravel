@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useForm, router, usePage } from "@inertiajs/react";
 import toast from "react-hot-toast";
 import { View } from "./View";
+import Pagination from "@/Components/Pagination";
 
 export default function Index({ auth, members, searchQuery }) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -175,6 +176,10 @@ export default function Index({ auth, members, searchQuery }) {
                                         ))}
                                     </tbody>
                                 </table>
+                                <Pagination
+                                    class="mt-6"
+                                    links={members.links}
+                                />
                                 <Modal show={showDeleteModal}>
                                     <h2 className="text-lg font-medium text-gray-900">
                                         Are you sure you want to delete this

@@ -22,9 +22,10 @@ class MemberController extends Controller
             $membersQuery->where('fullname', 'like', '%' . $searchQuery . '%')
                 ->orWhere('email', 'like', '%' . $searchQuery . '%')
                 ->orWhere('phone', 'like', '%' . $searchQuery . '%')
-                ->orWhereHas('passports', function(Builder $query) use ($searchQuery) {
-                    $query->where('number', 'like', '%'.$searchQuery.'%');
-                });}
+                ->orWhereHas('passports', function (Builder $query) use ($searchQuery) {
+                    $query->where('number', 'like', '%' . $searchQuery . '%');
+                });
+        }
 
         $members = $membersQuery->latest()->paginate(15);
         return Inertia::render('Members/Index', [
@@ -66,8 +67,9 @@ class MemberController extends Controller
             'passportImage' => 'required|image|mimes:jpeg,png,jpg|max:5048',
             'lga' => 'required|string',
             'gender' => 'required|string',
-            'level_of_education' => 'required|string'
-        ]);
+            'level_of_education' => 'required|string',
+            'employerOrInstitution' => ['required', 'string']
+        ], ['employerOrInstitution.required' => 'This field is required']);
 
         if ($request->hasFile('passportImage')) {
             $extension = $request->file('passportImage')->getClientOriginalExtension();
