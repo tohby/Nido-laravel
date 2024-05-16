@@ -87,7 +87,7 @@ const Membership = () => {
                             We're thrilled to have you join our vibrant
                             community of Nigerians in Vietnam. Kindly fill out
                             the following details. Your information will be kept
-                            confidential and used solely for internal purposes.
+                            confidential and used solely for internal purposes. Please note that this information is shared with the Nigerian Embassy in Vietnam.
                         </p>
                         <form
                             onSubmit={submit}
