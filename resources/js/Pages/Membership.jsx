@@ -87,7 +87,9 @@ const Membership = () => {
                             We're thrilled to have you join our vibrant
                             community of Nigerians in Vietnam. Kindly fill out
                             the following details. Your information will be kept
-                            confidential and used solely for internal purposes. Please note that this information is shared with the Nigerian Embassy in Vietnam.
+                            confidential and used solely for internal purposes.
+                            Please note that this information is shared with the
+                            Nigerian Embassy in Vietnam.
                         </p>
                         <form
                             onSubmit={submit}
@@ -197,7 +199,7 @@ const Membership = () => {
                                     <SelectInput
                                         id="gender"
                                         className="mt-1 block w-full"
-                                        value={data.maritalStatus}
+                                        value={data.gender}
                                         onChange={(e) =>
                                             setData("gender", e.target.value)
                                         }
