@@ -10,12 +10,12 @@ import AddPassports from "./AddPassports";
 
 export const View = ({ show, setShowViewModal, memberData }) => {
     const reportTemplateRef = useRef(null);
-    const modal = document.getElementById("MemberDetail");
+    // const modal = document.getElementById("MemberDetail");
     const [showPassports, setShowPassports] = useState(false);
     const [showAddPassports, setShowAddPassports] = useState(false);
 
     const downloadPDF = () => {
-        html2canvas(modal).then((canvas) => {
+        html2canvas(document.querySelector("#memberDetail")).then((canvas) => {
             const imageData = canvas.toDataURL("image/png", 1.0);
             const pdf = new jsPDF("p", "px", [canvas.width, canvas.height]);
             pdf.addImage(imageData, "PNG", 50, 50);
@@ -49,7 +49,7 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                             onClose={() => setShowViewModal(false)}
                         />
                     ) : (
-                        <div className="grid grid-cols-2" id="MemberDetail">
+                        <div className="grid grid-cols-2" id="memberDetail">
                             <div>
                                 {memberData && memberData.passports && (
                                     <img
