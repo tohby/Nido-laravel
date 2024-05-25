@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PassportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,6 +37,9 @@ Route::post('/become-a-member', [MemberController::class, 'store'])->name('Membe
 Route::middleware('auth')->group(function () {
     Route::get('/members', [MemberController::class, 'index'])->name('members');
     Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('member.destroy');
+    Route::patch('members/{id}', [MemberController::class, 'update'])->name('members.update');
+    Route::post('passport/{id}', [PassportController::class, 'store'])->name('passport.store');
+    Route::delete('/passport/{id}', [PassportController::class, 'destroy'])->name('passport.destroy');
 });
 
 Route::middleware('auth')->group(function () {

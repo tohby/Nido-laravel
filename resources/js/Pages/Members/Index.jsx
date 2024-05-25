@@ -6,14 +6,17 @@ import DangerButton from "@/Components/DangerButton";
 import { Edit2, Eye, Trash } from "react-feather";
 import Modal from "@/Components/Modal";
 import { useState } from "react";
-import { useForm, router, usePage } from "@inertiajs/react";
+import { useForm, router } from "@inertiajs/react";
 import toast from "react-hot-toast";
 import { View } from "./View";
 import Pagination from "@/Components/Pagination";
+import Edit from "./Edit";
+import { useAnimate } from "framer-motion";
 
 export default function Index({ auth, members, searchQuery }) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
+    const [showEditModal, setShowEditModal] = useState(false);
     const [selectedMemberId, setSelectedMemberId] = useState(0);
     const [memberData, setMemberData] = useState({});
 
@@ -48,6 +51,11 @@ export default function Index({ auth, members, searchQuery }) {
     const handleView = (member) => {
         setMemberData(member);
         setShowViewModal(true);
+    };
+
+    const handleEdit = (member) => {
+        setMemberData(member);
+        setShowEditModal(true);
     };
 
     const closeModal = () => {
@@ -118,19 +126,25 @@ export default function Index({ auth, members, searchQuery }) {
                                                 key={index}
                                             >
                                                 <td className="px-2 py-4">
-                                                    <div className="flex gap-3">
+                                                    <div className="flex gap-1">
+                                                        {auth.user.role ===
+                                                            0 && (
+                                                            <SecondaryButton
+                                                                className="focus:ring-0 border-0 px-2 !shadow-none"
+                                                                onClick={() =>
+                                                                    handleEdit(
+                                                                        member
+                                                                    )
+                                                                }
+                                                            >
+                                                                <Edit2
+                                                                    size={16}
+                                                                />
+                                                            </SecondaryButton>
+                                                        )}
+
                                                         <SecondaryButton
-                                                            className="focus:ring-0 border-0 px-2 hidden"
-                                                            onClick={() =>
-                                                                toast(
-                                                                    "Hello World"
-                                                                )
-                                                            }
-                                                        >
-                                                            <Edit2 size={16} />
-                                                        </SecondaryButton>
-                                                        <SecondaryButton
-                                                            className="focus:ring-0 border-0 px-2"
+                                                            className="focus:ring-0 border-0 px-2 !shadow-none"
                                                             onClick={() =>
                                                                 handleView(
                                                                     member
@@ -140,7 +154,7 @@ export default function Index({ auth, members, searchQuery }) {
                                                             <Eye size={16} />
                                                         </SecondaryButton>
                                                         <SecondaryButton
-                                                            className="focus:ring-0 border-0 px-2"
+                                                            className="focus:ring-0 border-0 px-2 !shadow-none"
                                                             onClick={() =>
                                                                 handleConfirmation(
                                                                     member.id
@@ -214,6 +228,15 @@ export default function Index({ auth, members, searchQuery }) {
                                         memberData={memberData}
                                     />
                                 )}
+
+                                <Edit
+                                    show={
+                                        memberData !== undefined &&
+                                        showEditModal
+                                    }
+                                    onClose={() => setShowEditModal(false)}
+                                    member={memberData}
+                                />
                             </div>
                         </div>
                     </div>

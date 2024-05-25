@@ -40,7 +40,7 @@ class Member extends Model
 
     public function passports(): HasMany
     {
-        return $this->hasMany(Passport::class);
+        return $this->hasMany(Passport::class)->orderBy('created_at', 'desc');
     }
 
     public function visas(): HasMany

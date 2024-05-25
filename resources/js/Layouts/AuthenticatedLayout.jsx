@@ -179,7 +179,7 @@ export default function Authenticated({ user, header, children }) {
             )}
 
             <main>{children}</main>
-            <Toaster position="top-center" />
+            <Toaster position="bottom-right" />
         </div>
     );
 }

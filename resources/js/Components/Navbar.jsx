@@ -35,65 +35,6 @@ const Navbar = ({ openSidebar }) => {
                             <div className="ease my-1 h-[2px] w-5 transform rounded-full transition duration-300 group-data-[focus-visible]:bg-yellow group-data-[focus-visible]:theme-tech:bg-yellow bg-gray-400 theme-tech:bg-gray-200" />
                             <div className="ease my-1 h-[2px] w-5 transform rounded-full transition duration-300 group-data-[focus-visible]:bg-yellow group-data-[focus-visible]:theme-tech:bg-yellow bg-gray-400 theme-tech:bg-gray-200" />
                         </button>
-                        <div
-                            className="flex flex-col gap-10 pb-3 pl-3 pr-[62px] pt-6 md:pr-[110px]"
-                            id=":R2aja:"
-                            aria-hidden="true"
-                        >
-                            <ul
-                                className="flex flex-col gap-1 opacity-0"
-                                aria-labelledby=":R2ajaH1:"
-                            >
-                                {menuLinks.map((link, index) => (
-                                    <li>
-                                        <Link
-                                            className="body-m group inline-flex h-6 items-center gap-4 rounded px-1 py-1 text-white outline-none focus-visible:text-yellow theme-tech:text-gray-400"
-                                            tabIndex={-1}
-                                            href="/product"
-                                        >
-                                            Product
-                                            <svg
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="group-active: h-4 w-4 rotate-90 text-green-500 theme-tech:text-white"
-                                            >
-                                                <path
-                                                    d="M6 10L12 4L18 10M12 5V20"
-                                                    stroke="currentColor"
-                                                    strokeWidth={2}
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="flex">
-                                <a
-                                    className="body-s inline-flex items-center justify-between rounded-full outline-none transition cursor-pointer disabled:cursor-not-allowed border group-hover:border-green-500 group-hover:text-green-500 focus-visible:border-yellow active:border-green-300 active:text-green-300 py-3 md:py-2 theme-platform:hover:border-green-500 theme-platform:focus-visible:border-yellow theme-tech:focus-visible:border-yellow theme-tech:focus-visible:text-yellow disabled:border-gray-200 disabled:text-gray-300 px-4 h-8 shrink-0 gap-4 border-white text-white hover:border-gray-200 hover:text-gray-200 theme-tech:border-gray-200 theme-tech:text-gray-400 theme-tech:hover:border-green-500 theme-tech:hover:text-green-500 theme-product:border-white theme-platform:border-white"
-                                    tabIndex={-1}
-                                    href="/learn-more"
-                                >
-                                    Learn more
-                                    <svg
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="rotate-90 h-5 w-5"
-                                    >
-                                        <path
-                                            d="M6 10L12 4L18 10M12 5V20"
-                                            stroke="currentColor"
-                                            strokeWidth={2}
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                     <ul className="hidden flex-col items-center gap-8 lg:flex lg:flex-row">
                         {menuLinks.map((link, index) => (

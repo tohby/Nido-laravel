@@ -16,8 +16,8 @@ const Footer = () => {
                             <ApplicationLogo className="w-20 h-20 fill-current text-green-500" />
                         </a>
                     </div>
-                    <div className="col-span-12 grid grid-cols-subgrid gap-y-8 md:col-span-8 md:gap-y-18 lg:col-span-6">
-                        <div className="col-span-6 flex flex-col gap-4 md:col-span-2 lg:col-span-2">
+                    <div className="col-span-12 grid grid-cols-subgrid gap-y-10 md:col-span-8 md:gap-y-18 lg:col-span-6">
+                        <div className="col-span-6 flex flex-col gap-4 md:col-span-2 lg:col-span-1">
                             <h3 className="text-gray-400 theme-tech:text-gray-100">
                                 Links
                             </h3>
@@ -40,7 +40,7 @@ const Footer = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-span-6 flex flex-col gap-4 md:col-span-2 lg:col-span-2">
+                        <div className="col-span-6 flex flex-col gap-4 md:col-span-2 lg:col-span-3">
                             <h3 className="text-gray-400 theme-tech:text-gray-100">
                                 NIDO contact
                             </h3>
@@ -58,6 +58,13 @@ const Footer = () => {
                                     >
                                         Facebook group
                                     </a>
+                                </li>
+                                <li className="body-s max-w-80">
+                                    <p className='before relative py-1 text-green-700 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:focus-visible:text-yellow theme-tech:text-gray-100 theme-tech:hover:text-gray-300'>
+                                        Address: TPI Office Building 40-42, Hung
+                                        Gia 2, Phu My Hung Urban Area, Tan Phong
+                                        Ward District 7, HCMC Office Address
+                                    </p>
                                 </li>
                             </ul>
                         </div>

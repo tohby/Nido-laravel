@@ -9,12 +9,10 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 
 import { States } from "@/Constants/states";
-import moment from "moment";
 import { Link } from "@inertiajs/react";
 
 const Membership = () => {
     const { errors } = usePage().props;
-    console.log(errors);
     const { data, setData, post, processing, wasSuccessful } = useForm({
         fullname: "",
         email: "",
