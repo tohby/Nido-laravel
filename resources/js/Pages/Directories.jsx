@@ -1,8 +1,9 @@
 import React from "react";
 import Guest from "@/Layouts/GuestLayout";
-import { Head, Link } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
+import { Facebook, Link2, Instagram } from "react-feather";
 
-const About = () => {
+const About = ({ directories }) => {
     return (
         <Guest>
             <Head title="Directories" />
@@ -13,33 +14,74 @@ const About = () => {
                             Directories.
                         </h1>
                         <p className="text-lg max-w-xl whitespace-pre-wrap text-pretty text-gray-500">
-                            Explore the vibrant community of Nigerian entrepreneurs making their mark in Vietnam.
+                            Explore the vibrant community of Nigerian
+                            entrepreneurs making their mark in Vietnam.
                         </p>
                     </div>
                 </div>
             </header>
             <section id="directories">
                 <div className="container p-4 mx-auto">
-                    <div
-                        className="mx-auto flex flex-col items-center border border-gray-200 bg-white rounded-lg md:flex-row md:max-w-6xl p-2"
-                    >
-                        <img
-                            className="object-cover w-full rounded-lg h-50 md:h-60 md:w-48 md:rounded-lg"
-                            src="/nido-12.jpg"
-                            alt=""
-                        />
-                        <div className="flex flex-col justify-between p-4 leading-normal ml-4">
-                            <h5 className="mb-2 text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
-                                Noteworthy technology acquisitions 2021
-                            </h5>
-                            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                Here are the biggest enterprise technology acquisitions of 2021 so far, in
-                                reverse chronological order.
-                            </p>
-                        </div>
-                    </div>
+                    <ul className="mt-3">
+                        {directories.map((directory, index) => (
+                            <li key={index}>
+                                <hr className="w-full border-t border-zinc-950/10" />
+                                <div className="flex items-center justify-center gap-5">
+                                    <div className="flex gap-6 py-6">
+                                        <div className="w-40 shrink-0">
+                                            <img
+                                                src={`storage/directories/${directory.img}`}
+                                                alt={`${directory.name} image`}
+                                                className="rounded-lg p-1"
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <div className="text-base/6">
+                                                {directory.name}
+                                            </div>
+                                            <div className="text-xs/6 text-zinc-600">
+                                                {directory.desc}
+                                            </div>
+                                            <div className="text-xs/6 text-zinc-600 flex gap-6">
+                                                {directory.facebook && (
+                                                    <a
+                                                        href={
+                                                            directory.facebook
+                                                        }
+                                                        target="_blank"
+                                                        className="cursor-pointer"
+                                                    >
+                                                        <Facebook size={18} />
+                                                    </a>
+                                                )}
+                                                {directory.instagram && (
+                                                    <a
+                                                        href={
+                                                            directory.instagram
+                                                        }
+                                                        target="_blank"
+                                                        className="cursor-pointer"
+                                                    >
+                                                        <Instagram size={18} />
+                                                    </a>
+                                                )}
+                                                {directory.url && (
+                                                    <a
+                                                        href={directory.url}
+                                                        target="_blank"
+                                                        className="cursor-pointer"
+                                                    >
+                                                        <Link2 size={18} />
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-
             </section>
         </Guest>
     );

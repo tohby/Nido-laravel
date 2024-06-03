@@ -20,9 +20,7 @@ Route::get('/about', function () {
     return Inertia::render('About');
 })->name('about');
 
-Route::get('/directory', function () {
-    return Inertia::render('Directories');
-})->name('directory');
+Route::get('/directory', [DirectoryController::class, 'directories'])->name('directory');
 
 Route::get('/contact', function () {
     return Inertia::render('Contact');

@@ -124,4 +124,12 @@ class DirectoryController extends Controller
         $directory = Directory::find($id);
         $directory->delete();
     }
+
+    public function directories()
+    {
+        $directories = Directory::orderBy('name')->get();
+        return Inertia::render('Directories', [
+            'directories' => $directories
+        ]);
+    }
 }

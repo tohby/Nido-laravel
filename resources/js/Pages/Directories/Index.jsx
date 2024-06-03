@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
 import New from "./New";
-import { Edit2, Facebook, Link2, MapPin, Trash } from "react-feather";
+import {
+    Edit2,
+    Facebook,
+    Instagram,
+    Link2,
+    MapPin,
+    Trash,
+} from "react-feather";
 import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
 import Modal from "@/Components/Modal";
@@ -67,7 +74,7 @@ const Index = ({ auth, directories }) => {
                                 <hr className="w-full border-t border-zinc-950/10" />
                                 <div className="flex items-center justify-center gap-5">
                                     <div className="flex gap-6 py-6">
-                                        <div className="w-28 shrink-0">
+                                        <div className="w-40 shrink-0">
                                             <img
                                                 src={`storage/directories/${directory.img}`}
                                                 alt={`${directory.name} image`}
@@ -91,6 +98,17 @@ const Index = ({ auth, directories }) => {
                                                         className="cursor-pointer"
                                                     >
                                                         <Facebook size={18} />
+                                                    </a>
+                                                )}
+                                                {directory.instagram && (
+                                                    <a
+                                                        href={
+                                                            directory.instagram
+                                                        }
+                                                        target="_blank"
+                                                        className="cursor-pointer"
+                                                    >
+                                                        <Instagram size={18} />
                                                     </a>
                                                 )}
                                                 {directory.url && (

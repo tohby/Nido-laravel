@@ -38,7 +38,7 @@ const Navbar = ({ openSidebar }) => {
                     </div>
                     <ul className="hidden flex-col items-center gap-8 lg:flex lg:flex-row">
                         {menuLinks.map((link, index) => (
-                            <li className="body-s">
+                            <li className="body-s" key={index}>
                                 <NavLink
                                     className='before border-none relative py-1 text-gray-400 outline-none transition-colors duration-200 hover:text-green-800 focus-visible:text-yellow focus-visible:before:absolute focus-visible:before:-left-2 focus-visible:before:top-0 focus-visible:before:h-full focus-visible:before:w-[calc(100%+1rem)] focus-visible:before:rounded-full focus-visible:before:border focus-visible:before:border-yellow focus-visible:before:px-2 focus-visible:before:content-[""] active:text-green-300 theme-tech:text-white theme-tech:hover:text-gray-200 theme-tech:focus-visible:text-yellow'
                                     href={route(link.route)}
