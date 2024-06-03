@@ -76,7 +76,7 @@ const Index = ({ auth, directories }) => {
                                     <div className="flex gap-6 py-6">
                                         <div className="w-40 shrink-0">
                                             <img
-                                                src={`storage/directories/${directory.img}`}
+                                                src={`/storage/directories/${directory.img}`}
                                                 alt={`${directory.name} image`}
                                                 className="aspect-[3/2] rounded-lg p-1"
                                             />
