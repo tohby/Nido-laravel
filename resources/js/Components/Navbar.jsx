@@ -17,6 +17,7 @@ const Navbar = ({ openSidebar }) => {
                     <img
                         src="/nidovn-logo.svg"
                         className="block h-10 lg:h-20 w-auto fill-current text-gray-800 me-8"
+                        alt="Nido VN Logo"
                     />
                     <div
                         className="absolute right-1 top-1.5 z-20 overflow-hidden rounded-lg transition-[background-color] lg:!hidden bg-transparent"

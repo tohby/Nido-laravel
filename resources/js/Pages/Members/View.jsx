@@ -19,7 +19,7 @@ export const View = ({ show, setShowViewModal, memberData }) => {
             const pdf = new jsPDF("p", "px", [canvas.width, canvas.height]);
             pdf.addImage(imageData, "PNG", 50, 50);
             pdf.save(
-                `${memberData.fullname} - ${memberData?.passports[0]?.number}`
+                `${memberData.fullname} - ${memberData?.passports[0]?.number}`,
             );
         });
     };
@@ -163,7 +163,7 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                                             />
                                             <span className="ml-1">
                                                 {moment(memberData.dob).format(
-                                                    "LL"
+                                                    "LL",
                                                 )}
                                             </span>
                                         </div>

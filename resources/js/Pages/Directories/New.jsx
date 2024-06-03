@@ -131,6 +131,7 @@ const New = ({ show, close, item }) => {
                             <img
                                 src={`storage/directories/${item.img}`}
                                 className="mt-2 w-56 object-cover"
+                                alt="Logo"
                             />
                             <span
                                 className="cursor-pointer text-red-500"
