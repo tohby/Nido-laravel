@@ -18,10 +18,7 @@ const Default = () => {
                     muted
                     preload="true"
                 >
-                    <source
-                        src="/20193650-uhd_3840_2160_24fps.mp4"
-                        type="video/mp4"
-                    />
+                    <source src="/Nido 314.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
 

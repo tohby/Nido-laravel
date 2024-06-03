@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DirectoryController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PassportController;
@@ -19,9 +20,9 @@ Route::get('/about', function () {
     return Inertia::render('About');
 })->name('about');
 
-Route::get('/directories', function () {
+Route::get('/directory', function () {
     return Inertia::render('Directories');
-})->name('directories');
+})->name('directory');
 
 Route::get('/contact', function () {
     return Inertia::render('Contact');
@@ -46,6 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/directories', [DirectoryController::class, 'index'])->name('directories');
+    Route::post('/directories', [DirectoryController::class, 'store'])->name('directory.store');
+    Route::post('/directories/{id}', [DirectoryController::class, 'update'])->name('directory.update');
+    Route::delete('/directories/{id}', [DirectoryController::class, 'destroy'])->name('directory.destroy');
 });
 
 require __DIR__ . '/auth.php';

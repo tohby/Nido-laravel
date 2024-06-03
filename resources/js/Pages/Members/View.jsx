@@ -10,7 +10,6 @@ import AddPassports from "./AddPassports";
 
 export const View = ({ show, setShowViewModal, memberData }) => {
     const reportTemplateRef = useRef(null);
-    // const modal = document.getElementById("MemberDetail");
     const [showPassports, setShowPassports] = useState(false);
     const [showAddPassports, setShowAddPassports] = useState(false);
 

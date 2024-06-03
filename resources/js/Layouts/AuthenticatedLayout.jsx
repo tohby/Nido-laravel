@@ -26,16 +26,21 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink
                                     href={route("dashboard")}
                                     active={route().current("dashboard")}
+                                    only={["members"]}
                                 >
                                     Dashboard
                                 </NavLink>
                                 <NavLink
                                     href={route("members")}
                                     active={route().current("members")}
+                                    only={["members"]}
                                 >
                                     Members
                                 </NavLink>
-                                <NavLink href={"#"} active={false}>
+                                <NavLink
+                                    href={route("directories")}
+                                    active={route().current("directories")}
+                                >
                                     Directories
                                 </NavLink>
                             </div>
@@ -90,7 +95,7 @@ export default function Authenticated({ user, header, children }) {
                             <button
                                 onClick={() =>
                                     setShowingNavigationDropdown(
-                                        (previousState) => !previousState
+                                        (previousState) => !previousState,
                                     )
                                 }
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
