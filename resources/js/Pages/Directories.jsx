@@ -26,9 +26,9 @@ const About = ({ directories }) => {
                         {directories.map((directory, index) => (
                             <li key={index}>
                                 <hr className="w-full border-t border-zinc-950/10" />
-                                <div className="flex items-center justify-center gap-5">
-                                    <div className="flex gap-6 py-6">
-                                        <div className="w-40 shrink-0">
+                                <div className="flex items-center justify-start gap-5">
+                                    <div className="flex gap-20 py-6">
+                                        <div className="w-60 shrink-0">
                                             <img
                                                 src={`/storage/directories/${directory.img}`}
                                                 alt={`${directory.name} image`}
@@ -36,13 +36,13 @@ const About = ({ directories }) => {
                                             />
                                         </div>
                                         <div className="space-y-1.5">
-                                            <div className="text-base/6">
+                                            <div className="text-3xl">
                                                 {directory.name}
                                             </div>
-                                            <div className="text-xs/6 text-zinc-600">
+                                            <div className="text-xl text-zinc-600">
                                                 {directory.desc}
                                             </div>
-                                            <div className="text-xs/6 text-zinc-600 flex gap-6">
+                                            <div className="text-sm text-zinc-600 flex gap-6 !mt-4">
                                                 {directory.facebook && (
                                                     <a
                                                         href={
@@ -51,7 +51,7 @@ const About = ({ directories }) => {
                                                         target="_blank"
                                                         className="cursor-pointer"
                                                     >
-                                                        <Facebook size={18} />
+                                                        <Facebook size={20} />
                                                     </a>
                                                 )}
                                                 {directory.instagram && (
@@ -62,7 +62,7 @@ const About = ({ directories }) => {
                                                         target="_blank"
                                                         className="cursor-pointer"
                                                     >
-                                                        <Instagram size={18} />
+                                                        <Instagram size={20} />
                                                     </a>
                                                 )}
                                                 {directory.url && (
@@ -71,7 +71,7 @@ const About = ({ directories }) => {
                                                         target="_blank"
                                                         className="cursor-pointer"
                                                     >
-                                                        <Link2 size={18} />
+                                                        <Link2 size={20} />
                                                     </a>
                                                 )}
                                             </div>

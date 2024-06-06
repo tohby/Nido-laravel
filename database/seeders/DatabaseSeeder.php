@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Settings;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,10 +26,16 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'mikeom21@yahoo.com',
         // ]);
 
-        User::factory()->create([
-            'name' => 'Embassy Staff',
-            'email' => 'embassy@nidovietnam.com',
-            'role' => 1
+        // User::factory()->create([
+        //     'name' => 'Embassy Staff',
+        //     'email' => 'embassy@nidovietnam.com',
+        //     'role' => 1
+        // ]);
+
+        Settings::create([
+            'key' => 'Passport registration',
+            'value' => 'true',
+            'type' => 'boolean'
         ]);
     }
 }

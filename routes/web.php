@@ -5,6 +5,7 @@ use App\Http\Controllers\DirectoryController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PassportController;
+use App\Http\Controllers\PassportRegistrationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -50,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/directories', [DirectoryController::class, 'store'])->name('directory.store');
     Route::post('/directories/{id}', [DirectoryController::class, 'update'])->name('directory.update');
     Route::delete('/directories/{id}', [DirectoryController::class, 'destroy'])->name('directory.destroy');
+    Route::resource('passports', PassportRegistrationController::class);
 });
 
 require __DIR__ . '/auth.php';

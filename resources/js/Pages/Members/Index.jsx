@@ -11,7 +11,6 @@ import toast from "react-hot-toast";
 import { View } from "./View";
 import Pagination from "@/Components/Pagination";
 import Edit from "./Edit";
-import { useAnimate } from "framer-motion";
 
 export default function Index({ auth, members, searchQuery }) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -133,7 +132,7 @@ export default function Index({ auth, members, searchQuery }) {
                                                                 className="focus:ring-0 border-0 px-2 !shadow-none"
                                                                 onClick={() =>
                                                                     handleEdit(
-                                                                        member
+                                                                        member,
                                                                     )
                                                                 }
                                                             >
@@ -147,7 +146,7 @@ export default function Index({ auth, members, searchQuery }) {
                                                             className="focus:ring-0 border-0 px-2 !shadow-none"
                                                             onClick={() =>
                                                                 handleView(
-                                                                    member
+                                                                    member,
                                                                 )
                                                             }
                                                         >
@@ -157,7 +156,7 @@ export default function Index({ auth, members, searchQuery }) {
                                                             className="focus:ring-0 border-0 px-2 !shadow-none"
                                                             onClick={() =>
                                                                 handleConfirmation(
-                                                                    member.id
+                                                                    member.id,
                                                                 )
                                                             }
                                                         >

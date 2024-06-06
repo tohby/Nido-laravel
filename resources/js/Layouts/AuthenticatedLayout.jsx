@@ -43,6 +43,12 @@ export default function Authenticated({ user, header, children }) {
                                 >
                                     Directories
                                 </NavLink>
+                                <NavLink
+                                    href={route("passports.index")}
+                                    active={route().current("passports.index")}
+                                >
+                                    Passport Renewals
+                                </NavLink>
                             </div>
                         </div>
 

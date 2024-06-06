@@ -1,7 +1,7 @@
 import React from "react";
 import { X } from "react-feather";
 
-const SearchBox = ({ value, onChange, onSearch, onClear }) => {
+const SearchBox = ({ value, onChange, onSearch, onClear, placeholder }) => {
     const handleSearch = (e) => {
         e.preventDefault();
 
@@ -39,7 +39,7 @@ const SearchBox = ({ value, onChange, onSearch, onClear }) => {
                         type="search"
                         id="default-search"
                         className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:border-green-700 focus:ring-green-700 focus:bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-700 dark:focus:border-green-700"
-                        placeholder="Search Members..."
+                        placeholder={placeholder || "Search Members..."}
                         required
                         value={value}
                         onChange={(e) => onChange(e.target.value)}

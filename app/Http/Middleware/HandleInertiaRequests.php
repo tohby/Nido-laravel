@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use App\Models\Settings;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -29,11 +30,14 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $passport_registration = Settings::where('key', 'Passport registration')->first();
+        // dd($passport_registration);
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
             ],
+            'passport_settings' => $passport_registration,
         ];
     }
 }
