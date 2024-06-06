@@ -10,28 +10,33 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Default', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-})->name('welcome');
+// Route::get('/', function () {
+//     return Inertia::render('Default', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//     ]);
+// })->name('welcome');
 
-Route::get('/about', function () {
-    return Inertia::render('About');
-})->name('about');
+// Route::get('/about', function () {
+//     return Inertia::render('About');
+// })->name('about');
+// Route::get('/contact', function () {
+//     return Inertia::render('Contact');
+// })->name('contact');
+// Route::get('/become-a-member', function () {
+//     return Inertia::render('Membership');
+// })->name('member.join');
+
+Route::inertia('/about', 'About')->name('about');
+Route::inertia('/', 'Default')->name('welcome');
+Route::inertia('/contact', 'Contact')->name('contact');
+Route::inertia('/become-a-member', 'Membership')->name('member.join');
 
 Route::get('/directory', [DirectoryController::class, 'directories'])->name('directory');
 
-Route::get('/contact', function () {
-    return Inertia::render('Contact');
-})->name('contact');
-
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/become-a-member', function () {
-    return Inertia::render('Membership');
-})->name('member.join');
+
 Route::post('/become-a-member', [MemberController::class, 'store'])->name('Membership.store');
 
 Route::middleware('auth')->group(function () {
