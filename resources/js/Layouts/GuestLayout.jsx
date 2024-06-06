@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Guest({ children }) {
     const { passport_settings } = usePage().props;
-    const [showBanner, setShowBanner] = useState(passport_settings.value);
+    const [showBanner, setShowBanner] = useState(false);
 
     const [openSidebar, setOpenSidebar] = useState(false);
     return (
