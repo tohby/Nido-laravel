@@ -19,6 +19,7 @@ class MemberController extends Controller
     {
         $searchQuery = $request->input('search');
         $membersQuery = Member::with(['passports']);
+        $occupations = Member::distinct()->pluck('occupation');
         if ($searchQuery) {
             $membersQuery->where('fullname', 'like', '%' . $searchQuery . '%')
                 ->orWhere('email', 'like', '%' . $searchQuery . '%')
@@ -28,11 +29,14 @@ class MemberController extends Controller
                 });
         }
 
+
+
         $members = $membersQuery->latest()->paginate(15);
         return Inertia::render('Members/Index', [
             'status' => session('status'),
             'members' => $members,
-            'searchQuery' => $searchQuery
+            'searchQuery' => $searchQuery,
+            'occupations' => $occupations
         ]);
     }
 
@@ -53,7 +57,7 @@ class MemberController extends Controller
             'fullname' => ['required', 'string'],
             'phone' => [
                 'required',
-                'regex:/^(\+\d{1,3}\s?)?(\d{10})$/',
+                'regex:/^(?:\+84|84|0)\d{9}$/',
                 'unique:' . Member::class
             ],
             'email' => ['required', 'email', 'unique:' . Member::class],
@@ -71,6 +75,7 @@ class MemberController extends Controller
             'level_of_education' => 'required|string',
             'dateOfIssue' => 'required',
             'expiryDate' => 'required',
+            'program' => 'required_if:occupation,===,Student' | 'required_if:occupation,student',
             'employerOrInstitution' => ['required', 'string']
         ], ['employerOrInstitution.required' => 'This field is required']);
 
@@ -96,6 +101,7 @@ class MemberController extends Controller
             'nextOfKinPhone' => $request->input('nextOfKinPhone'),
             'occupation' => $occupation,
             'LGA' => $request->input('lga'),
+            'course' => $request->input('course'),
             'level_of_education' => $request->input('level_of_education'),
             'gender' => $request->input('gender'),
         ];
@@ -159,6 +165,7 @@ class MemberController extends Controller
             'LGA' => 'required|string',
             'gender' => 'required|string',
             'level_of_education' => 'required|string',
+            'course' => 'required_if:occupation,==,student',
             'employerOrInstitution' => ['required', 'string']
         ], ['employerOrInstitution.required' => 'This field is required']);
 
@@ -175,6 +182,7 @@ class MemberController extends Controller
             'nextOfKinPhone' => $request->input('nextOfKinPhone'),
             'occupation' => $occupation,
             'LGA' => $request->input('LGA'),
+            'course' => $request->input('course'),
             'level_of_education' => $request->input('level_of_education'),
             'gender' => $request->input('gender'),
         ];

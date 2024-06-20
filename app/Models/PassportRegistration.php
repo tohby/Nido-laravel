@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PassportRegistration extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'fullname',
+        'email',
+        'phone',
+        'passportNo',
+        'batch'
+    ];
 }

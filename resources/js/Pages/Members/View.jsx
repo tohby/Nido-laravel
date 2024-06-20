@@ -261,27 +261,46 @@ export const View = ({ show, setShowViewModal, memberData }) => {
                                             Occupation:
                                         </label>
                                         <div className="flex items-center text-gray-800 text-lg">
-                                            <span className="ml-1">
+                                            <span className="ml-1 capitalize">
                                                 {memberData.occupation}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="flex flex-col text-gray-500 mb-2">
                                         <label className="mb-1 text-sm">
-                                            {memberData.occupation === "Student"
+                                            {memberData.occupation &&
+                                            memberData.occupation.toLowerCase() ===
+                                                "student"
                                                 ? "Institution"
                                                 : "Employer:"}
                                         </label>
                                         <div className="flex items-center text-gray-800 text-lg">
                                             <span className="ml-1">
-                                                {memberData.occupation ===
-                                                "Student"
+                                                {memberData.occupation &&
+                                                memberData.occupation.toLowerCase() ===
+                                                    "student"
                                                     ? memberData.institution
                                                     : memberData.employer}
                                             </span>
                                         </div>
                                     </div>
                                 </div>
+                                {memberData.occupation &&
+                                    memberData.occupation.toLowerCase() ===
+                                        "student" && (
+                                        <div className="grid">
+                                            <div className="flex flex-col text-gray-500 mb-2">
+                                                <label className="mb-1 text-sm">
+                                                    Course
+                                                </label>
+                                                <div className="flex items-center text-gray-800 text-lg">
+                                                    <span className="ml-1">
+                                                        {memberData.course}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
                                 <div className="grid grid-cols-2">
                                     <div className="flex flex-col text-gray-500 mb-2">
                                         <label className="mb-1 text-sm">

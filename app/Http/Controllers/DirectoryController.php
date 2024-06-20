@@ -127,7 +127,7 @@ class DirectoryController extends Controller
 
     public function directories()
     {
-        $directories = Directory::orderBy('name')->get();
+        $directories = Directory::orderBy('name')->paginate(5);
         return Inertia::render('Directories', [
             'directories' => $directories
         ]);

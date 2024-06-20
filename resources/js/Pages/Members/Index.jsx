@@ -12,7 +12,7 @@ import { View } from "./View";
 import Pagination from "@/Components/Pagination";
 import Edit from "./Edit";
 
-export default function Index({ auth, members, searchQuery }) {
+export default function Index({ auth, members, searchQuery, occupations }) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -75,12 +75,18 @@ export default function Index({ auth, members, searchQuery }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <SearchBox
-                        value={data.search}
-                        onChange={(searchText) => setData("search", searchText)}
-                        onSearch={handleSearch}
-                        onClear={handleClear}
-                    />
+                    <div className="flex">
+                        <div className="w-96">
+                            <SearchBox
+                                value={data.search}
+                                onChange={(searchText) =>
+                                    setData("search", searchText)
+                                }
+                                onSearch={handleSearch}
+                                onClear={handleClear}
+                            />
+                        </div>
+                    </div>
 
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">

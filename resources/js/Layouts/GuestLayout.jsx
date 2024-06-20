@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Guest({ children }) {
     const { passport_settings } = usePage().props;
-    const [showBanner, setShowBanner] = useState(false);
+    const [showBanner, setShowBanner] = useState(passport_settings.value);
 
     const [openSidebar, setOpenSidebar] = useState(false);
     return (
@@ -33,7 +33,10 @@ export default function Guest({ children }) {
                             </span>
                             <span>
                                 Passport registration is now open! Click{" "}
-                                <Link className="font-bold text-white mr-1 text-md">
+                                <Link
+                                    href={route("passports.renew")}
+                                    className="font-bold text-white mr-1 text-md"
+                                >
                                     HERE
                                 </Link>
                                 to register

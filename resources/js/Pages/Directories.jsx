@@ -2,6 +2,7 @@ import React from "react";
 import Guest from "@/Layouts/GuestLayout";
 import { Head } from "@inertiajs/react";
 import { Facebook, Link2, Instagram } from "react-feather";
+import Pagination from "@/Components/Pagination";
 
 const About = ({ directories }) => {
     return (
@@ -21,9 +22,9 @@ const About = ({ directories }) => {
                 </div>
             </header>
             <section id="directories">
-                <div className="container p-4 mx-auto">
+                <div className="container p-4 mx-auto max-w-7xl">
                     <ul className="mt-3">
-                        {directories.map((directory, index) => (
+                        {directories.data.map((directory, index) => (
                             <li key={index}>
                                 <hr className="w-full border-t border-zinc-950/10" />
                                 <div className="flex items-center justify-start gap-5">
@@ -81,6 +82,9 @@ const About = ({ directories }) => {
                             </li>
                         ))}
                     </ul>
+                    <div className="flex justify-center mx-auto">
+                        <Pagination class="mt-6" links={directories.links} />
+                    </div>
                 </div>
             </section>
         </Guest>

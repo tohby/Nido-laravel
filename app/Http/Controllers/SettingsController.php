@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Settings;
 use Illuminate\Http\Request;
+use App\Events\PassportRegistrationProcessed;
 
 class SettingsController extends Controller
 {
@@ -50,9 +51,16 @@ class SettingsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Settings $settings)
+    public function update(Request $request, $id)
     {
-        //
+
+        $setting = Settings::find($id);
+        $setting->value = $request->input('value');
+        $setting->save();
+
+        if ($setting->key === 'Passport registration' && $request->input('value') == true) {
+            PassportRegistrationProcessed::dispatch();
+        }
     }
 
     /**

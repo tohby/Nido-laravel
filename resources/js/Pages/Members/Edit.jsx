@@ -305,6 +305,24 @@ const Edit = ({ show, member, onClose }) => {
                         />
                     </div>
                 </div>
+                {data.occupation &&
+                    data.occupation.toLowerCase() === "student" && (
+                        <div className="grid mt-4">
+                            <InputLabel value="Course of study" required />
+                            <TextInput
+                                id="course"
+                                className="mt-1 block w-full"
+                                value={data.course}
+                                onChange={(e) =>
+                                    setData("course", e.target.value)
+                                }
+                            />
+                            <InputError
+                                className="mt-2"
+                                message={errors.course}
+                            />
+                        </div>
+                    )}
                 <div className="grid grid-cols-2 gap-7 mt-4">
                     <div>
                         <InputLabel value="Next of kin in Nigeria" required />

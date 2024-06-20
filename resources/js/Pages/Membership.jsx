@@ -32,6 +32,7 @@ const Membership = () => {
         lga: "",
         gender: "",
         level_of_education: "",
+        course: "",
     });
 
     const submit = (e) => {
@@ -227,7 +228,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "maritalStatus",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     >
@@ -236,6 +237,7 @@ const Membership = () => {
                                         </option>
                                         <option value="Married">Married</option>
                                         <option value="Single">Single</option>
+                                        <option value="Widowed">Widowed</option>
                                         <option value="Divorced">
                                             Divorced
                                         </option>
@@ -281,7 +283,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "stateOfOrigin",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     >
@@ -335,7 +337,7 @@ const Membership = () => {
                                     onChange={(e) =>
                                         setData(
                                             "level_of_education",
-                                            e.target.value
+                                            e.target.value,
                                         )
                                     }
                                 >
@@ -372,7 +374,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "occupation",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     />
@@ -399,7 +401,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "employerOrInstitution",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     />
@@ -409,6 +411,27 @@ const Membership = () => {
                                     />
                                 </div>
                             </div>
+
+                            {data.occupation.toLowerCase() === "student" && (
+                                <div className="grid">
+                                    <InputLabel
+                                        value="Course of study"
+                                        required
+                                    />
+                                    <TextInput
+                                        id="course"
+                                        className="mt-1 block w-full"
+                                        value={data.course}
+                                        onChange={(e) =>
+                                            setData("course", e.target.value)
+                                        }
+                                    />
+                                    <InputError
+                                        className="mt-2"
+                                        message={errors.course}
+                                    />
+                                </div>
+                            )}
 
                             <div className="grid grid-cols-2 gap-7">
                                 <div>
@@ -442,7 +465,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "nextOfKinPhone",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     />
@@ -465,7 +488,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "passportNumber",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                     />
@@ -482,7 +505,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "passportImage",
-                                                e.target.files[0]
+                                                e.target.files[0],
                                             )
                                         }
                                     />
@@ -506,7 +529,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "dateOfIssue",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                         className="mt-1 block w-full appearance-none bg-white border border-gray-300 rounded-md py-2 px-4 items-center"
@@ -530,7 +553,7 @@ const Membership = () => {
                                         onChange={(e) =>
                                             setData(
                                                 "expiryDate",
-                                                e.target.value
+                                                e.target.value,
                                             )
                                         }
                                         className="mt-1 block w-full appearance-none bg-white border border-gray-300 rounded-md py-2 px-4 items-center"

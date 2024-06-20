@@ -6,31 +6,14 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PassportController;
 use App\Http\Controllers\PassportRegistrationController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-
-// Route::get('/', function () {
-//     return Inertia::render('Default', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//     ]);
-// })->name('welcome');
-
-// Route::get('/about', function () {
-//     return Inertia::render('About');
-// })->name('about');
-// Route::get('/contact', function () {
-//     return Inertia::render('Contact');
-// })->name('contact');
-// Route::get('/become-a-member', function () {
-//     return Inertia::render('Membership');
-// })->name('member.join');
 
 Route::inertia('/about', 'About')->name('about');
 Route::inertia('/', 'Default')->name('welcome');
 Route::inertia('/contact', 'Contact')->name('contact');
 Route::inertia('/become-a-member', 'Membership')->name('member.join');
+Route::inertia('/passport-renewal', 'Renewal')->name('passports.renew');
 
 Route::get('/directory', [DirectoryController::class, 'directories'])->name('directory');
 
@@ -38,6 +21,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 
 Route::post('/become-a-member', [MemberController::class, 'store'])->name('Membership.store');
+Route::post('/passport-renewal', [PassportRegistrationController::class, 'store'])->name('passports.store');
 
 Route::middleware('auth')->group(function () {
     Route::get('/members', [MemberController::class, 'index'])->name('members');
@@ -45,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('members/{id}', [MemberController::class, 'update'])->name('members.update');
     Route::post('passport/{id}', [PassportController::class, 'store'])->name('passport.store');
     Route::delete('/passport/{id}', [PassportController::class, 'destroy'])->name('passport.destroy');
+    Route::patch('settings/{setting}', [SettingsController::class, 'update'])->name('settings.update');
 });
 
 Route::middleware('auth')->group(function () {
