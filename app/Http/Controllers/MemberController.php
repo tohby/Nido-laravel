@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use App\Events\MemberRegistered;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
+use Propaganistas\LaravelPhone\PhoneNumber;
 
 class MemberController extends Controller
 {
@@ -53,12 +54,18 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->phone) {
+            $request->merge([
+                '_phone' => phone($request->phone, 'VN')->formatE164()
+            ]);
+        }
+
         $request->validate([
             'fullname' => ['required', 'string'],
-            'phone' => [
+            '_phone' => [
                 'required',
                 'regex:/^(?:\+84|84|0)\d{9}$/',
-                'unique:' . Member::class
+                'unique:' . Member::class . ',phone'
             ],
             'email' => ['required', 'email', 'unique:' . Member::class],
             'dob' => ['required', 'date', 'before_or_equal:' . now()->format('Y-m-d')],
@@ -77,7 +84,12 @@ class MemberController extends Controller
             'expiryDate' => 'required',
             'program' => 'required_if:occupation,===,Student' | 'required_if:occupation,student',
             'employerOrInstitution' => ['required', 'string']
-        ], ['employerOrInstitution.required' => 'This field is required']);
+        ], [
+            'employerOrInstitution.required' => 'This field is required',
+            '_phone.required' => 'Please provide a valid phone number',
+            '_phone.unique' => 'A member with this phone number is already registered.',
+            '_phone.regex' => 'The format for this number is invalid'
+        ]);
 
         if ($request->hasFile('passportImage')) {
             $extension = $request->file('passportImage')->getClientOriginalExtension();
@@ -91,7 +103,7 @@ class MemberController extends Controller
         $occupation = $request->input('occupation');
         $memberData = [
             'fullname' => $request->input('fullname'),
-            'phone' => $request->input('phone'),
+            'phone' => phone($request->phone, 'VN')->formatE164(),
             'email' => $request->input('email'),
             'dob' => $request->input('dob'),
             'address' => $request->input('address'),
@@ -146,13 +158,18 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
+        if ($request->phone) {
+            $request->merge([
+                '_phone' => phone($request->phone, 'VN')->formatE164()
+            ]);
+        }
         $member = Member::find($request->id);
         $request->validate([
             'fullname' => ['required', 'string'],
-            'phone' => [
+            '_phone' => [
                 'required',
-                'regex:/^(\+\d{1,3}\s?)?(\d{10})$/',
-                Rule::unique('members')->ignore($member)
+                'regex:/^(?:\+84|84|0)\d{9}$/',
+                'unique:' . Member::class . ',phone'
             ],
             'email' => ['required', 'email', Rule::unique('members')->ignore($member)],
             'dob' => ['required', 'date', 'before_or_equal:' . now()->format('Y-m-d')],
@@ -167,12 +184,17 @@ class MemberController extends Controller
             'level_of_education' => 'required|string',
             'course' => 'required_if:occupation,==,student',
             'employerOrInstitution' => ['required', 'string']
-        ], ['employerOrInstitution.required' => 'This field is required']);
+        ], [
+            'employerOrInstitution.required' => 'This field is required',
+            '_phone.required' => 'Please provide a valid phone number',
+            '_phone.unique' => 'A member with this phone number is already registered.',
+            '_phone.regex' => 'The format for this number is invalid'
+        ]);
 
         $occupation = $request->input('occupation');
         $memberData = [
             'fullname' => $request->input('fullname'),
-            'phone' => $request->input('phone'),
+            'phone' => phone($request->phone, 'VN')->formatE164(),
             'email' => $request->input('email'),
             'dob' => $request->input('dob'),
             'address' => $request->input('address'),

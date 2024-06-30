@@ -139,7 +139,7 @@ const Membership = () => {
 
                                     <InputError
                                         className="mt-2"
-                                        message={errors.phone}
+                                        message={errors._phone}
                                     />
                                 </div>
                                 <div>
