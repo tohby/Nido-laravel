@@ -41,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/directories', [DirectoryController::class, 'store'])->name('directory.store');
     Route::post('/directories/{id}', [DirectoryController::class, 'update'])->name('directory.update');
     Route::delete('/directories/{id}', [DirectoryController::class, 'destroy'])->name('directory.destroy');
-    Route::resource('passports', PassportRegistrationController::class);
+    Route::get('passports', [PassportRegistrationController::class, 'index'])->name('passports.index');
 });
 
 require __DIR__ . '/auth.php';

@@ -113,8 +113,6 @@ class MemberController extends Controller
         }
 
         $member = Member::create($memberData);
-        // $member->notify(new MemberRegistered());
-        MemberRegistered::dispatch($member);
 
         Passport::Create([
             'member_id' => $member->id,
@@ -123,6 +121,8 @@ class MemberController extends Controller
             'date_of_issue' => $request->input('dateOfIssue'),
             'expiry_date' => $request->input('expiryDate'),
         ]);
+
+        MemberRegistered::dispatch($member);
     }
 
     /**
