@@ -86,7 +86,7 @@ class MemberController extends Controller
             'employerOrInstitution' => ['required', 'string']
         ], [
             'employerOrInstitution.required' => 'This field is required',
-            '_phone.required' => 'Please provide a valid phone number',
+            '_phone.required' => 'Please provide a valid phone number here in Vietnam',
             '_phone.unique' => 'A member with this phone number is already registered.',
             '_phone.regex' => 'The format for this number is invalid'
         ]);

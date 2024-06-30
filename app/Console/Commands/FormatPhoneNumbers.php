@@ -30,8 +30,13 @@ class FormatPhoneNumbers extends Command
         $members = Member::get();
 
         foreach ($members as $member) {
-            $member->phone = phone($member->phone, 'VN')->formatE164();
-            $member->save();
+            if (phone($member->phone, 'VN')->isOfCountry('VN')) {
+                $member->phone = phone($member->phone, 'VN')->formatE164();
+                $member->save();
+            } elseif (phone($member->phone, 'NG')->isOfCountry('NG')) {
+                $member->phone = phone($member->phone, 'NG')->formatE164();
+                $member->save();
+            }
         }
     }
 }
