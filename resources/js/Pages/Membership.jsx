@@ -498,7 +498,10 @@ const Membership = () => {
                                     />
                                 </div>
                                 <div>
-                                    <InputLabel value="Passport" required />
+                                    <InputLabel
+                                        value="International Passport"
+                                        required
+                                    />
                                     <TextInput
                                         type="file"
                                         className="mt-1 block w-full appearance-none bg-white border border-gray-300 rounded-md py-1 px-4 items-center"

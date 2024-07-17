@@ -21,13 +21,14 @@ export default function Dashboard({
     directoriesCount,
     latestMembers,
     statistics,
+    ageGroups,
 }) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
     const [selectedMemberId, setSelectedMemberId] = useState(0);
     const [memberData, setMemberData] = useState({});
 
-    console.log(statistics);
+    console.log(ageGroups);
 
     const pieData = {
         labels: statistics.labels,
@@ -36,11 +37,11 @@ export default function Dashboard({
                 label: "Occupations",
                 data: statistics.data,
                 backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
-                    "rgba(54, 162, 235, 0.2)",
-                    "rgba(255, 206, 86, 0.2)",
-                    "rgba(75, 192, 192, 0.2)",
-                    "rgba(153, 102, 255, 0.2)",
+                    "#15522c",
+                    "#16803c",
+                    "#17a248",
+                    "#23c45c",
+                    "#dcfce7",
                 ],
                 // spacing: 4,
             },
@@ -147,7 +148,51 @@ export default function Dashboard({
             <div className="py-6">
                 <div className="max-w-7xl mx-auto px-8">
                     <div className="grid grid-cols-3 gap-5">
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg col-span-3 md:col-span-2">
+                        <div className="col-span-2">
+                            <div className="bg-white shadow-sm rounded-lg p-6">
+                                <h4 className="text-xl mb-4">Member Ages</h4>{" "}
+                                <div className="space-y-5">
+                                    {ageGroups &&
+                                        Object.keys(ageGroups).map(
+                                            (group, index) => (
+                                                <div key={index}>
+                                                    <div className="mb-3 flex justify-between items-center">
+                                                        <h3 className="text-base font-normal text-gray-500">
+                                                            {group} years
+                                                        </h3>
+                                                        <span className="text-sm text-gray-800">
+                                                            {ageGroups[group]}%
+                                                        </span>
+                                                    </div>
+                                                    <div
+                                                        className="flex w-full h-2 bg-gray-200 rounded-full overflow-hidden"
+                                                        role="progressbar"
+                                                        aria-valuenow={
+                                                            ageGroups[group]
+                                                        }
+                                                        aria-valuemin={0}
+                                                        aria-valuemax={100}
+                                                    >
+                                                        <div
+                                                            className="flex flex-col justify-center rounded-full overflow-hidden bg-green-700 text-xs text-white text-center whitespace-nowrap transition duration-500"
+                                                            style={{
+                                                                width: `${ageGroups[group]}%`,
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            ),
+                                        )}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+                            {/* <h4 className="text-xl mb-4">Occupations</h4> */}
+                            <Doughnut data={pieData} options={options} />
+                        </div>
+                    </div>
+                    <div className="grid mt-12">
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="p-6 text-gray-900">
                                 <div className="relative overflow-x-auto">
                                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -309,10 +354,6 @@ export default function Dashboard({
                                     )}
                                 </div>
                             </div>
-                        </div>
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-                            {/* <h4 className="text-xl mb-4">Occupations</h4> */}
-                            <Doughnut data={pieData} options={options} />
                         </div>
                     </div>
                 </div>

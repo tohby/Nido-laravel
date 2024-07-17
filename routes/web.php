@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::post('passport/{id}', [PassportController::class, 'store'])->name('passport.store');
     Route::delete('/passport/{id}', [PassportController::class, 'destroy'])->name('passport.destroy');
     Route::patch('settings/{setting}', [SettingsController::class, 'update'])->name('settings.update');
+    Route::get('members/export', [MemberController::class, 'export'])->name('members.export');
 });
 
 Route::middleware('auth')->group(function () {

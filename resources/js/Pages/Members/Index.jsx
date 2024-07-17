@@ -3,7 +3,7 @@ import { Head } from "@inertiajs/react";
 import SearchBox from "@/Components/SearchBox";
 import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
-import { Edit2, Eye, Trash } from "react-feather";
+import { Download, Edit2, Eye, Trash } from "react-feather";
 import Modal from "@/Components/Modal";
 import { useState } from "react";
 import { useForm, router } from "@inertiajs/react";
@@ -11,8 +11,20 @@ import toast from "react-hot-toast";
 import { View } from "./View";
 import Pagination from "@/Components/Pagination";
 import Edit from "./Edit";
+import Filter from "@/Components/Filter";
+import PrimaryButton from "@/Components/PrimaryButton";
 
-export default function Index({ auth, members, searchQuery, occupations }) {
+export default function Index({
+    auth,
+    members,
+    searchQuery,
+    occupations,
+    occupationQuery,
+    maritalStatuses,
+    maritalQuery,
+    levelOfEducationQuery,
+    levelsOfEducation,
+}) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -21,10 +33,25 @@ export default function Index({ auth, members, searchQuery, occupations }) {
 
     const { data, setData, get, processing } = useForm({
         search: searchQuery || "",
+        occupationQuery: occupationQuery || "All",
+        maritalQuery: maritalQuery || "All",
+        levelOfEducationQuery: levelOfEducationQuery || "All",
     });
 
+    const handleFilterChange = (key, value) => {
+        const updatedData = { ...data, [key]: value };
+        setData(key, value);
+
+        router.get(route("members"), updatedData);
+    };
+
     const handleSearch = () => {
-        get(route("members"));
+        get(route("members"), {
+            search: data.search,
+            occupationQuery: data.occupationQuery,
+            maritalFilter: data.maritalFilter,
+            levelOfEducationQuery: levelOfEducationQuery || "All",
+        });
     };
 
     const handleClear = async () => {
@@ -62,6 +89,32 @@ export default function Index({ auth, members, searchQuery, occupations }) {
         setShowDeleteModal(false);
     };
 
+    const handleExport = () => {
+        get(
+            route("members.export"),
+            {
+                search: data.search,
+                occupationQuery: data.occupationQuery,
+                maritalFilter: data.maritalFilter,
+                levelOfEducationQuery: levelOfEducationQuery || "All",
+            },
+            {
+                responseType: "blob",
+                onSuccess: ({ props, response }) => {
+                    const url = window.URL.createObjectURL(
+                        new Blob([response.data]),
+                    );
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.setAttribute("download", "members.xlsx"); // or whatever you want to name the file
+                    document.body.appendChild(link);
+                    link.click();
+                    link.parentNode.removeChild(link);
+                },
+            },
+        );
+    };
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -75,17 +128,53 @@ export default function Index({ auth, members, searchQuery, occupations }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="flex">
-                        <div className="w-96">
-                            <SearchBox
-                                value={data.search}
-                                onChange={(searchText) =>
-                                    setData("search", searchText)
+                    <div className="flex justify-between h-14 mb-10">
+                        <div className="flex gap-4">
+                            <div className="w-96">
+                                <SearchBox
+                                    value={data.search}
+                                    onChange={(searchText) =>
+                                        setData("search", searchText)
+                                    }
+                                    onSearch={handleSearch}
+                                    onClear={handleClear}
+                                />
+                            </div>
+                            <Filter
+                                selected={data.occupationQuery}
+                                options={occupations}
+                                onChange={(value) =>
+                                    handleFilterChange("occupationQuery", value)
                                 }
-                                onSearch={handleSearch}
-                                onClear={handleClear}
+                                className={"w-44"}
+                            />
+                            <Filter
+                                selected={data.maritalQuery}
+                                options={maritalStatuses}
+                                onChange={(value) =>
+                                    handleFilterChange("maritalQuery", value)
+                                }
+                                className={"w-32"}
+                            />
+                            <Filter
+                                selected={data.levelOfEducationQuery}
+                                options={levelsOfEducation}
+                                onChange={(value) =>
+                                    handleFilterChange(
+                                        "levelOfEducationQuery",
+                                        value,
+                                    )
+                                }
+                                className={"w-44"}
                             />
                         </div>
+                        <PrimaryButton
+                            className="rounded-md"
+                            onClick={handleExport}
+                        >
+                            <Download className="mr-4" />
+                            Export to Excel
+                        </PrimaryButton>
                     </div>
 
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">

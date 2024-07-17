@@ -10,6 +10,8 @@ use App\Events\MemberRegistered;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Validation\Rule;
 use Propaganistas\LaravelPhone\PhoneNumber;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MembersExport;
 
 class MemberController extends Controller
 {
@@ -20,14 +22,36 @@ class MemberController extends Controller
     {
         $searchQuery = $request->input('search');
         $membersQuery = Member::with(['passports']);
+        $occupationQuery = $request->input('occupationQuery', 'All');
+        $maritalQuery = $request->input('maritalQuery', 'All');
+        $levelOfEducationQuery = $request->input('levelOfEducationQuery', 'All');
+
         $occupations = Member::distinct()->pluck('occupation');
+        $maritalStatuses = Member::distinct()->pluck('maritalStatus')->prepend('All');
+        $levelsOfEducation = Member::distinct()->pluck('level_of_education')->prepend('All');
+        $occupations->prepend('All');
+
         if ($searchQuery) {
-            $membersQuery->where('fullname', 'like', '%' . $searchQuery . '%')
-                ->orWhere('email', 'like', '%' . $searchQuery . '%')
-                ->orWhere('phone', 'like', '%' . $searchQuery . '%')
-                ->orWhereHas('passports', function (Builder $query) use ($searchQuery) {
-                    $query->where('number', 'like', '%' . $searchQuery . '%');
-                });
+            $membersQuery->where(function ($query) use ($searchQuery) {
+                $query->where('fullname', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('email', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('phone', 'like', '%' . $searchQuery . '%')
+                    ->orWhereHas('passports', function (Builder $query) use ($searchQuery) {
+                        $query->where('number', 'like', '%' . $searchQuery . '%');
+                    });
+            });
+        }
+
+        if ($occupationQuery !== 'All') {
+            $membersQuery->where('occupation', $occupationQuery);
+        }
+
+        if ($maritalQuery !== 'All') {
+            $membersQuery->where('maritalStatus', $maritalQuery);
+        }
+
+        if ($levelOfEducationQuery !== 'All') {
+            $membersQuery->where('level_of_education', $levelOfEducationQuery);
         }
 
 
@@ -37,7 +61,12 @@ class MemberController extends Controller
             'status' => session('status'),
             'members' => $members,
             'searchQuery' => $searchQuery,
-            'occupations' => $occupations
+            'occupations' => $occupations,
+            'occupationQuery' => $occupationQuery,
+            'maritalStatuses' => $maritalStatuses,
+            'levelsOfEducation' => $levelsOfEducation,
+            'maritalQuery' => $maritalQuery,
+            'levelOfEducationQuery' => $levelOfEducationQuery
         ]);
     }
 
@@ -227,5 +256,51 @@ class MemberController extends Controller
         $passports = Passport::where('member_id', $id)->delete();
         $member->delete();
         return redirect()->back();
+    }
+
+    /**
+     * Export the specified resource
+     */
+    public function export(Request $request)
+    {
+        $searchQuery = $request->input('search');
+        $occupationQuery = $request->input('occupationQuery', 'All');
+        $maritalQuery = $request->input('maritalQuery', 'All');
+        $levelOfEducationQuery = $request->input('levelOfEducationQuery', 'All');
+
+        $membersQuery = Member::with([
+            'passports' => function ($query) {
+                $query->latest()->limit(1);  // Only get the latest passport
+            }
+        ]);
+
+        if ($searchQuery) {
+            $membersQuery->where(function ($query) use ($searchQuery) {
+                $query->where('fullname', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('email', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('phone', 'like', '%' . $searchQuery . '%')
+                    ->orWhereHas('passports', function (Builder $query) use ($searchQuery) {
+                        $query->where('number', 'like', '%' . $searchQuery . '%');
+                    });
+            });
+        }
+
+        if ($occupationQuery !== 'All') {
+            $membersQuery->where('occupation', $occupationQuery);
+        }
+
+        if ($maritalQuery !== 'All') {
+            $membersQuery->where('maritalStatus', $maritalQuery);
+        }
+
+        if ($levelOfEducationQuery !== 'All') {
+            $membersQuery->where('level_of_education', $levelOfEducationQuery);
+        }
+
+        $members = $membersQuery->latest()->get();
+
+        return Excel::download(new MembersExport($members), 'members.xlsx');
+
+
     }
 }
