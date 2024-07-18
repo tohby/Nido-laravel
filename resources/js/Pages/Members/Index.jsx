@@ -90,29 +90,13 @@ export default function Index({
     };
 
     const handleExport = () => {
-        get(
-            route("members.export"),
-            {
-                search: data.search,
-                occupationQuery: data.occupationQuery,
-                maritalFilter: data.maritalFilter,
-                levelOfEducationQuery: levelOfEducationQuery || "All",
-            },
-            {
-                responseType: "blob",
-                onSuccess: ({ props, response }) => {
-                    const url = window.URL.createObjectURL(
-                        new Blob([response.data]),
-                    );
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.setAttribute("download", "members.xlsx"); // or whatever you want to name the file
-                    document.body.appendChild(link);
-                    link.click();
-                    link.parentNode.removeChild(link);
-                },
-            },
-        );
+        const url = route("members.export", {
+            search: data.search,
+            occupationQuery: data.occupationQuery,
+            maritalFilter: data.maritalFilter,
+            levelOfEducationQuery: levelOfEducationQuery || "All",
+        });
+        window.location.href = url;
     };
 
     return (

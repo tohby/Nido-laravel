@@ -14,7 +14,10 @@ const SearchBox = ({ value, onChange, onSearch, onClear, placeholder }) => {
     return (
         <div>
             <form className="max-w-md mb-5">
-                <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
+                <label
+                    htmlFor="default-search"
+                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                >
                     Search
                 </label>
                 <div className="relative">

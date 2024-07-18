@@ -300,7 +300,5 @@ class MemberController extends Controller
         $members = $membersQuery->latest()->get();
 
         return Excel::download(new MembersExport($members), 'members.xlsx');
-
-
     }
 }
