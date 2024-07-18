@@ -8,10 +8,12 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 
 
-class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles
+class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, WithStyles, WithColumnFormatting
 {
     protected $members;
 
@@ -85,6 +87,14 @@ class MembersExport implements FromCollection, WithHeadings, ShouldAutoSize, Wit
 
         return [
             // Additional styles can be added here if necessary
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'F' => NumberFormat::FORMAT_TEXT,  //
+            'Q' => NumberFormat::FORMAT_TEXT,  // 
         ];
     }
 }
