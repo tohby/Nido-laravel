@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="mx-auto px-4 lg:px-2.5 flex h-full flex-col justify-between gap-6 md:gap-[100px] lg:gap-[150px] bg-stone-100 mt-8">
-                <div className="max-w-7xl mx-auto">
+                <div className="max-w-[100rem] mx-auto">
                     <div className="grid grid-cols-12 gap-2 md:gap-2.5 gap-y-8 pt-6 lg:pt-14">
                         <div className="col-span-12 hidden md:col-span-4 md:block lg:col-start-1">
                             <a
