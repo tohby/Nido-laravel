@@ -83,17 +83,14 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->phone) {
-            $request->merge([
-                '_phone' => phone($request->phone, 'VN')->formatE164()
-            ]);
-        }
-
+        $request->merge([
+            'occupation' => strtoupper($request->input('occupation'))
+        ]);
         $request->validate([
             'fullname' => ['required', 'string'],
-            '_phone' => [
+            'phone' => [
                 'required',
-                'regex:/^(?:\+84|84|0)\d{9}$/',
+                'regex:/^(\+?234|\+?84)\d{7,14}$/',
                 'unique:' . Member::class . ',phone'
             ],
             'email' => ['required', 'email', 'unique:' . Member::class],
@@ -111,13 +108,13 @@ class MemberController extends Controller
             'level_of_education' => 'required|string',
             'dateOfIssue' => 'required',
             'expiryDate' => 'required',
-            'program' => 'required_if:occupation,===,Student' | 'required_if:occupation,student',
+            'program' => ['required_if:occupation,Student'],
             'employerOrInstitution' => ['required', 'string']
         ], [
             'employerOrInstitution.required' => 'This field is required',
-            '_phone.required' => 'Please provide a valid phone number here in Vietnam',
-            '_phone.unique' => 'A member with this phone number is already registered.',
-            '_phone.regex' => 'The format for this number is invalid'
+            'phone.required' => 'Please provide a valid phone number',
+            'phone.unique' => 'A member with this phone number is already registered.',
+            'phone.regex' => 'The phone number is invalid'
         ]);
 
         if ($request->hasFile('passportImage')) {
@@ -132,7 +129,7 @@ class MemberController extends Controller
         $occupation = $request->input('occupation');
         $memberData = [
             'fullname' => $request->input('fullname'),
-            'phone' => phone($request->phone, 'VN')->formatE164(),
+            'phone' => $request->input('phone'),
             'email' => $request->input('email'),
             'dob' => $request->input('dob'),
             'address' => $request->input('address'),

@@ -136,6 +136,13 @@ const Membership = () => {
                                         }
                                         autoComplete="phone"
                                     />
+                                    <p className="mt-1 text-sm text-gray-500">
+                                        Start your number with{" "}
+                                        <span className="font-medium">234</span>{" "}
+                                        (Nigeria) or{" "}
+                                        <span className="font-medium">84</span>{" "}
+                                        (Vietnam).
+                                    </p>
 
                                     <InputError
                                         className="mt-2"
