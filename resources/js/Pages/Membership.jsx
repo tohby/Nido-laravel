@@ -146,7 +146,7 @@ const Membership = () => {
 
                                     <InputError
                                         className="mt-2"
-                                        message={errors._phone}
+                                        message={errors.phone}
                                     />
                                 </div>
                                 <div>
